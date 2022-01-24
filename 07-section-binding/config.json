@@ -1,0 +1,9 @@
+{
+    "markdownStyle": "github",
+    "pdfOutputDir": "./output/pdf/",    
+    "pdfTemplateFile": "./templates/template.pdf",    
+    "docOutputDir": "./output/doc/",    
+    "docTemplateFile": "./templates/template.doc",    
+    "htmlOutputDir": "./output/html/",    
+    "htmlTemplateFile": "./templates/template.html"
+}
