@@ -1,0 +1,18 @@
+{
+    "markdownStyle": "github",
+    "pdf":{
+        "fileExtension": "pdf",
+        "outputDir": "./output/pdf/",    
+        "templateFile": "./templates/template.pdf"
+    },
+    "doc":{
+        "fileExtension": "doc",
+        "outputDir": "./output/doc/",    
+        "templateFile": "./templates/template.doc"
+    },
+    "html":{
+        "fileExtension": "html",
+        "outputDir": "./output/html/",    
+        "templateFile": "./templates/template.html"
+    }
+}
