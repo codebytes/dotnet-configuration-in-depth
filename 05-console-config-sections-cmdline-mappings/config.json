@@ -1,0 +1,7 @@
+{
+    "greeting": {
+        "message": "Hello",
+        "color": "red"
+    },
+    "environment": "dev"
+}
