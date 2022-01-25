@@ -1,0 +1,38 @@
+﻿@page
+@model InjectConfigInRazorModel
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "InjectConfiguration";
+    var pdf = Configuration.GetSection("MarkdownConverter:pdf").Get<FileOptions>();
+    var doc = Configuration.GetSection("MarkdownConverter:doc").Get<FileOptions>();
+    var html = Configuration.GetSection("MarkdownConverter:html").Get<FileOptions>();
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<h2>Pdf</h2>
+<ul>
+    <li>@pdf.FileExtension</li>
+    <li>@pdf.OutputDir</li>
+    <li>@pdf.TemplateFile</li>
+</ul>
+
+<h2>Doc</h2>
+<ul>
+    <li>@doc.FileExtension</li>
+    <li>@doc.OutputDir</li>
+    <li>@doc.TemplateFile</li>
+</ul>
+
+
+<h2>Html</h2>
+<ul>
+    <li>@html.FileExtension</li>
+    <li>@html.OutputDir</li>
+    <li>@html.TemplateFile</li>
+</ul>

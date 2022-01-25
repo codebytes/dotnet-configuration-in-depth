@@ -1,0 +1,15 @@
+﻿@page
+@model ProvidersModel
+@{
+    ViewData["Title"] = "Providers";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Providers</h1>
+</div>
+
+<ul>
+   @foreach(var provider in Model.Providers) {
+        <li>@provider</li>
+}
+</ul>
