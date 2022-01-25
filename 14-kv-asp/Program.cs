@@ -1,4 +1,8 @@
-#define Certificate // Managed
+//export ASPNETCORE_ENVIRONMENT=Production
+//export ASPNETCORE_ENVIRONMENT=Development
+
+//#define Certificate
+#define Managed
 
 #if Certificate
 // <snippet_Certificate>
@@ -45,6 +49,10 @@ if (builder.Environment.IsProduction())
     builder.Configuration.AddAzureKeyVault(
         new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
         new DefaultAzureCredential());
+}
+else
+{
+    builder.Configuration.AddUserSecrets<Program>(optional: true);
 }
 // </snippet_Managed>
 
