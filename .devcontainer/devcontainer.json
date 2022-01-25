@@ -33,10 +33,10 @@
 	//        dotnet dev-certs https --trust; dotnet dev-certs https -ep "${HOME}/.aspnet/https/aspnetapp.pfx" -p "SecurePwdGoesHere"
 	// 
 	// 2. Uncomment these 'remoteEnv' lines:
-	//    "remoteEnv": {
-	// 	      "ASPNETCORE_Kestrel__Certificates__Default__Password": "SecurePwdGoesHere",
-	//        "ASPNETCORE_Kestrel__Certificates__Default__Path": "/home/vscode/.aspnet/https/aspnetapp.pfx",
-	//    },
+	   "remoteEnv": {
+		      "ASPNETCORE_Kestrel__Certificates__Default__Password": "SecurePwdGoesHere",
+	       "ASPNETCORE_Kestrel__Certificates__Default__Path": "/home/vscode/.aspnet/https/aspnetapp.pfx",
+	   },
 	//
 	// 3. Do one of the following depending on your scenario:
 	//    * When using GitHub Codespaces and/or Remote - Containers:
@@ -45,7 +45,7 @@
 	//      3. Open a terminal in VS Code and run "mkdir -p /home/vscode/.aspnet/https && mv aspnetapp.pfx /home/vscode/.aspnet/https"
 	//
 	//    * If only using Remote - Containers with a local container, uncomment this line instead:
-	//      "mounts": [ "source=${env:HOME}${env:USERPROFILE}/.aspnet/https,target=/home/vscode/.aspnet/https,type=bind" ],
+	      "mounts": [ "source=${env:HOME}${env:USERPROFILE}/.aspnet/https,target=/home/vscode/.aspnet/https,type=bind" ],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "dotnet restore",
