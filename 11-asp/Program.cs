@@ -1,9 +1,13 @@
+using SampleAsp.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.Configure<FileOptions>(builder.Configuration.GetSection("MarkdownConverter:pdf"));
-// builder.Services.Configure<FileOptions>(builder.Configuration.GetSection("MarkdownConverter:doc"));
-// builder.Services.Configure<FileOptions>(builder.Configuration.GetSection("MarkdownConverter:html"));
+builder.Services.Configure<MarkdownConverter>(builder.Configuration.GetSection("MarkdownConverter"));
+
+//builder.Services.AddSingleton<IExportService, ExportService>();
+builder.Services.AddTransient<IExportService, ExportService>();
+//builder.Services.AddScoped<IExportService, ExportService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

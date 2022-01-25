@@ -7,11 +7,11 @@ namespace SampleAsp.Pages;
 public class InjectedIOptionsSnapshotModel : PageModel
 {
     private readonly ILogger<InjectedIOptionsSnapshotModel> _logger;
-    public FileOptions PdfOptions;
-    public InjectedIOptionsSnapshotModel(ILogger<InjectedIOptionsSnapshotModel> logger, IOptionsSnapshot<FileOptions> pdfOptions)
+    public MarkdownConverter MarkdownConverterSettings;
+    public InjectedIOptionsSnapshotModel(ILogger<InjectedIOptionsSnapshotModel> logger, IOptionsSnapshot<MarkdownConverter> markdown)
     {
         _logger = logger;
-        PdfOptions = pdfOptions.Value;
+        MarkdownConverterSettings = markdown.Value;
     }
 
     public void OnGet()

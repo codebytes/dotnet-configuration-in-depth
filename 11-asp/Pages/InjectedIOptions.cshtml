@@ -8,8 +8,28 @@
     <h1 class="display-4">Injected IOptions&lt;T&gt;</h1>
 </div>
 
+<h2>Markdown Settings</h2>
+<p>MarkdownStyle: @Model.MarkdownConverterSettings.MarkdownStyle</p>
+<h3>Pdf</h3>
 <ul>
-    <li>@Model.PdfOptions.FileExtension</li>
-    <li>@Model.PdfOptions.OutputDir</li>
-    <li>@Model.PdfOptions.TemplateFile</li>
+    <li>@Model.MarkdownConverterSettings.Pdf.Enabled</li>
+    <li>@Model.MarkdownConverterSettings.Pdf.FileExtension</li>
+    <li>@Model.MarkdownConverterSettings.Pdf.OutputDir</li>
+    <li>@Model.MarkdownConverterSettings.Pdf.TemplateFile</li>
+</ul>
+
+<h3>Doc</h3>
+<ul>
+    <li>@Model.MarkdownConverterSettings.Doc.Enabled</li>
+    <li>@Model.MarkdownConverterSettings.Doc.FileExtension</li>
+    <li>@Model.MarkdownConverterSettings.Doc.OutputDir</li>
+    <li>@Model.MarkdownConverterSettings.Doc.TemplateFile</li>
+</ul>
+
+<h3>Html</h3>
+<ul>
+    <li>@Model.MarkdownConverterSettings.Html.Enabled</li>
+    <li>@Model.MarkdownConverterSettings.Html.FileExtension</li>
+    <li>@Model.MarkdownConverterSettings.Html.OutputDir</li>
+    <li>@Model.MarkdownConverterSettings.Html.TemplateFile</li>
 </ul>
