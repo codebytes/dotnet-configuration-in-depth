@@ -12,7 +12,7 @@ public class ProvidersModel : PageModel
     {
         _logger = logger;
         ConfigRoot = (IConfigurationRoot)configRoot;
-        Providers = ConfigRoot?.Providers?.Select(p => p.ToString()) ?? Enumerable.Empty<string>();
+        Providers = ConfigRoot.Providers.Select(p => p.ToString());
     }
 
     public void OnGet()

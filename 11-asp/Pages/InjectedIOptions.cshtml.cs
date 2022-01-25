@@ -15,6 +15,8 @@ public class InjectedIOptionsModel : PageModel
     {
         _logger = logger;
         PdfOptions = pdfOptions.Value;
+        DocOptions = new FileOptions();
+        HTMLOptions = new FileOptions();
     }
 
     public void OnGet()
