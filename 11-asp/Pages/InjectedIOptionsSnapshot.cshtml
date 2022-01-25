@@ -1,0 +1,15 @@
+﻿@page
+@model InjectedIOptionsSnapshotModel
+@{
+    ViewData["Title"] = "InjectedIOptionsSnapshot";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Injected IOptionsSnapshot&lt;T&gt;</h1>
+</div>
+
+<ul>
+    <li>@Model.PdfOptions.FileExtension</li>
+    <li>@Model.PdfOptions.OutputDir</li>
+    <li>@Model.PdfOptions.TemplateFile</li>
+</ul>

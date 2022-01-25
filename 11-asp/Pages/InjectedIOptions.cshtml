@@ -1,0 +1,15 @@
+﻿@page
+@model InjectedIOptionsModel
+@{
+    ViewData["Title"] = "InjectedIOptions";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Injected IOptions&lt;T&gt;</h1>
+</div>
+
+<ul>
+    <li>@Model.PdfOptions.FileExtension</li>
+    <li>@Model.PdfOptions.OutputDir</li>
+    <li>@Model.PdfOptions.TemplateFile</li>
+</ul>
