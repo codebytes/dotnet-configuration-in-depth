@@ -1,25 +1,35 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/dotnet
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.241.1/containers/dotnet
 {
 	"name": "C# (.NET)",
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": { 
-			// Update 'VARIANT' to pick a .NET Core version: 3.1, 5.0, 6.0
+			// Update 'VARIANT' to pick a .NET Core version: 3.1, 6.0
 			// Append -bullseye or -focal to pin to an OS version.
-			"VARIANT": "6.0",
+			"VARIANT": "6.0-bullseye",
 			// Options
-			"NODE_VERSION": "none"
+			"NODE_VERSION": "lts/*"
 		}
 	},
 
-	// Set *default* container specific settings.json values on container create.
-	"settings": {},
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {	
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-dotnettools.csharp",
+				"ms-vscode.azurecli",
+				"ms-azuretools.vscode-bicep",
+				"ms-azuretools.vscode-azureterraform",
+				"yzhang.markdown-all-in-one",
+				"streetsidesoftware.code-spell-checker",
+				"marp-team.marp-vscode"
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"ms-dotnettools.csharp"
-	],
+			]
+		}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [5000, 5001],
@@ -37,7 +47,7 @@
 		      "ASPNETCORE_Kestrel__Certificates__Default__Password": "SecurePwdGoesHere",
 	       "ASPNETCORE_Kestrel__Certificates__Default__Path": "/home/vscode/.aspnet/https/aspnetapp.pfx",
 	   },
-	//
+	
 	// 3. Do one of the following depending on your scenario:
 	//    * When using GitHub Codespaces and/or Remote - Containers:
 	//      1. Start the container
@@ -45,12 +55,12 @@
 	//      3. Open a terminal in VS Code and run "mkdir -p /home/vscode/.aspnet/https && mv aspnetapp.pfx /home/vscode/.aspnet/https"
 	//
 	//    * If only using Remote - Containers with a local container, uncomment this line instead:
-	      "mounts": [ "source=${env:HOME}${env:USERPROFILE}/.aspnet/https,target=/home/vscode/.aspnet/https,type=bind" ],
+	     "mounts": [ "source=${env:HOME}${env:USERPROFILE}/.aspnet/https,target=/home/vscode/.aspnet/https,type=bind" ],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "dotnet restore",
 
-	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
 	"features": {
 		"azure-cli": "latest"
