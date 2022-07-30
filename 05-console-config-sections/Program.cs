@@ -8,7 +8,9 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
     .AddCommandLine(args)
     .Build();
 
-var name = args.Any() ? args[0] : "World";
-// See https://aka.ms/new-console-template for more information
+var name = "World";
+
+//dotnet run --greeting:color="blue"
+
 AnsiConsole.MarkupLine($"[{configuration["greeting:color"]}]{configuration["greeting:message"]}, {name}![/]");
 Console.WriteLine($"Configuration: {configuration["environment"]}");

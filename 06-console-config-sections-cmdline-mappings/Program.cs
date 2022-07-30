@@ -14,7 +14,7 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
     .AddCommandLine(args, mappings)
     .Build();
     
-var name = args.Any() ? args[0] : "World";
+var name = "World";
 // See https://aka.ms/new-console-template for more information
 AnsiConsole.MarkupLine($"[{configuration["greeting:color"]}]{configuration["greeting:message"]}, {name}![/]");
 Console.WriteLine($"Configuration: {configuration["environment"]}");
