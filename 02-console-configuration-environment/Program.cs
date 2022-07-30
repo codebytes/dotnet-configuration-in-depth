@@ -5,7 +5,15 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
     .AddEnvironmentVariables()
     .Build();
 
-var name = args.Any() ? args[0] : "World";
+var name = "World";
+
+// powershell
+// $env:environment="qa"        
+// dotnet run
+
+// bash
+// environment=qa dotnet run
+
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine($"{configuration["greeting"]}, {name}.");
 Console.WriteLine($"Configuration: {configuration["environment"]}");
