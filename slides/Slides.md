@@ -49,6 +49,16 @@ style: |
 
 ---
 
+What is Configuration?
+
+| Settings | Feature Flags | Secrets |
+| --- | --- | --- |
+|	Retry Times<br>Queue Length | Per User<br>Percentage| Connection Strings<br>App Registration
+</table>
+
+
+---
+
 # Demos
 
 ---

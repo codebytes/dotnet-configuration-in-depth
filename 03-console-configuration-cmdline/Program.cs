@@ -6,7 +6,12 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
     .AddCommandLine(args)
     .Build();
 
-var name = args.Any() ? args[0] : "World";
+// bash
+// dotnet run --environment=prod
+// environment=qa dotnet run
+// environment=qa dotnet run --environment=prod
+
+var name = "World";
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine($"{configuration["greeting"]}, {name}.");
 Console.WriteLine($"Configuration: {configuration["environment"]}");
