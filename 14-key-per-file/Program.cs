@@ -6,6 +6,7 @@
 IConfigurationRoot configuration = new ConfigurationBuilder()
     .AddJsonFile("config.json")
     .AddKeyPerFile(directoryPath: path, optional: true)
+    .AddUserSecrets<Program>(optional:true)
     .Build();
 
 var name = "World";

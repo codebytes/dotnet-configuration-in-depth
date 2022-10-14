@@ -10,6 +10,7 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
 // dotnet run --environment=prod
 // environment=qa dotnet run
 // environment=qa dotnet run --environment=prod
+// greeting=hey dotnet run --environment=prod
 
 var name = "World";
 // See https://aka.ms/new-console-template for more information

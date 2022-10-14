@@ -14,6 +14,9 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
     .AddCommandLine(args, mappings)
     .Build();
     
+//dotnet run --greeting:color="blue"
+//dotnet run --color="blue"    
+
 var name = "World";
 // See https://aka.ms/new-console-template for more information
 AnsiConsole.MarkupLine($"[{configuration["greeting:color"]}]{configuration["greeting:message"]}, {name}![/]");

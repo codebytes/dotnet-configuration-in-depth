@@ -15,6 +15,8 @@ builder.Host.ConfigureAppConfiguration(builder =>
                 });
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAzureAppConfiguration();
+builder.Services.Configure<Settings>(builder.Configuration.GetSection("TestApp:Settings"));
 
 var app = builder.Build();
 
@@ -28,6 +30,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAzureAppConfiguration();
 
 app.MapControllerRoute(
     name: "default",

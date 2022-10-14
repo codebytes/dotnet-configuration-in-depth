@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.Configure<MarkdownConverter>(builder.Configuration.GetSection("MarkdownConverter"));
 
-builder.Services.AddSingleton<IExportService, ExportService>();
-//builder.Services.AddTransient<IExportService, ExportService>();
+//builder.Services.AddSingleton<IExportService, ExportService>();
+builder.Services.AddTransient<IExportService, ExportService>();
 //builder.Services.AddScoped<IExportService, ExportService>();
 builder.Services.AddRazorPages();
 
