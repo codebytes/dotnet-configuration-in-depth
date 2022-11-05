@@ -2,6 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 public class WebHookSettings
 {
+    public const string ConfigurationSectionName = "WebHook";
+   
     [Required, Url]
     public string WebhookUrl { get; set; }
 

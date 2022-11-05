@@ -1,10 +1,11 @@
-using System.ComponentModel.DataAnnotations;
+using Microsoft.Extensions.DependencyInjection.Extensions; 
 using Microsoft.Extensions.Options;
+using System.ComponentModel.DataAnnotations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOptions<WebHookSettings>()
-    .BindConfiguration("WebHook")
+    .BindConfiguration(WebHookSettings.ConfigurationSectionName)
     .ValidateDataAnnotations()
     .Validate(config =>
         {
@@ -20,6 +21,9 @@ builder.Services.AddOptions<WebHookSettings>()
 builder.Services.AddSingleton(resolver =>
         resolver.GetRequiredService<IOptions<WebHookSettings>>().Value);
 
+builder.Services.TryAddEnumerable(
+    ServiceDescriptor.Singleton
+        <IValidateOptions<WebHookSettings>, ValidateWebHookSettingsOptions>());
 
 // Add services to the container.
 builder.Services.AddRazorPages();
