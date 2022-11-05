@@ -6,9 +6,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOptions<WebHookSettings>()
     .BindConfiguration("WebHook")
     .ValidateDataAnnotations()
+    .Validate(config =>
+        {
+            if (config.WebhookUrl.Length < 20)
+            {
+                return false;
+            }
+
+            return true;
+        }, "URL length is too short.")
     .ValidateOnStart();
 
-builder.Services.AddSingleton(resolver => 
+builder.Services.AddSingleton(resolver =>
         resolver.GetRequiredService<IOptions<WebHookSettings>>().Value);
 
 
