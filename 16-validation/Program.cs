@@ -16,15 +16,22 @@ builder.Services.AddOptions<WebHookSettings>()
 
             return true;
         }, "URL length is too short.")
+   .Validate(webHookSettings =>
+        {
+            return webHookSettings.WebhookUrl.StartsWith("https://");
+        }, "WebHookUrl must start with https://")
     .ValidateOnStart();
 
 builder.Services.AddSingleton(resolver =>
         resolver.GetRequiredService<IOptions<WebHookSettings>>().Value);
 
+<<<<<<< Updated upstream
 builder.Services.TryAddEnumerable(
     ServiceDescriptor.Singleton
         <IValidateOptions<WebHookSettings>, ValidateWebHookSettingsOptions>());
 
+=======
+>>>>>>> Stashed changes
 // Add services to the container.
 builder.Services.AddRazorPages();
 
