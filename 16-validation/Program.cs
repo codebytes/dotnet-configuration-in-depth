@@ -25,13 +25,10 @@ builder.Services.AddOptions<WebHookSettings>()
 builder.Services.AddSingleton(resolver =>
         resolver.GetRequiredService<IOptions<WebHookSettings>>().Value);
 
-<<<<<<< Updated upstream
 builder.Services.TryAddEnumerable(
     ServiceDescriptor.Singleton
         <IValidateOptions<WebHookSettings>, ValidateWebHookSettingsOptions>());
 
-=======
->>>>>>> Stashed changes
 // Add services to the container.
 builder.Services.AddRazorPages();
 
