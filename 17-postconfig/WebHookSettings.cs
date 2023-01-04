@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 public class WebHookSettings
 {
     [Required, Url]
-    public string WebhookUrl { get; set; }
+    public string? WebhookUrl { get; set; } = default;
 
     [Required]
-    public string DisplayName { get; set; }
+    public string? DisplayName { get; set; } = default;
 
     public bool Enabled { get; set; }
 

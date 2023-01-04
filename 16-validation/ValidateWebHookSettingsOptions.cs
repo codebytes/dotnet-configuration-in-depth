@@ -8,10 +8,11 @@ class ValidateWebHookSettingsOptions : IValidateOptions<WebHookSettings>
     public WebHookSettings _settings { get; private set; }
 
     public ValidateWebHookSettingsOptions(IConfiguration config) =>
-        _settings = config.GetSection(WebHookSettings.ConfigurationSectionName)
-                          .Get<WebHookSettings>();
+        _settings = config?.GetSection(WebHookSettings.ConfigurationSectionName)
+                          .Get<WebHookSettings>()
+                          ?? new WebHookSettings();
 
-    public ValidateOptionsResult Validate(string name, WebHookSettings options)
+    public ValidateOptionsResult Validate(string? name, WebHookSettings options)
     {
         StringBuilder failure = new();
         var rx = new Regex(@"^[a-zA-Z''-'\s]{1,20}$");

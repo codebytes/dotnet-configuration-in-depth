@@ -14,9 +14,9 @@ builder.Services.AddSingleton(resolver =>
 builder.Services.PostConfigure<WebHookSettings>(webHookSettings =>
 {
     // make sure url scheme is https
-    if (!webHookSettings.WebhookUrl.StartsWith("https://"))
+    if (!webHookSettings.WebhookUrl?.StartsWith("https://") ??  false)
     {
-        webHookSettings.WebhookUrl = webHookSettings.WebhookUrl.Replace("http://", "https://");
+        webHookSettings.WebhookUrl = webHookSettings.WebhookUrl?.Replace("http://", "https://");
     }
 });
 

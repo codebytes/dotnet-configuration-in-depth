@@ -5,10 +5,10 @@ public class WebHookSettings
     public const string ConfigurationSectionName = "WebHook";
    
     [Required, Url]
-    public string WebhookUrl { get; set; }
+    public string WebhookUrl { get; set; } = string.Empty;
 
     [Required]
-    public string DisplayName { get; set; }
+    public string DisplayName { get; set; } = string.Empty;
 
     public bool Enabled { get; set; }
 

@@ -10,9 +10,21 @@ public class InjectConfigModel : PageModel
     public InjectConfigModel(ILogger<InjectConfigModel> logger, IConfiguration configuration)
     {
         _logger = logger;
-        Options.Add(configuration.GetSection("MarkdownConverter:pdf").Get<FileOptions>());
-        Options.Add(configuration.GetSection("MarkdownConverter:doc").Get<FileOptions>());
-        Options.Add(configuration.GetSection("MarkdownConverter:html").Get<FileOptions>());
+        var pdf = configuration.GetSection("MarkdownConverter:pdf").Get<FileOptions>();
+        var doc = configuration.GetSection("MarkdownConverter:doc").Get<FileOptions>();
+        var html = configuration.GetSection("MarkdownConverter:html").Get<FileOptions>();
+        if(pdf is not null)
+        {
+            Options.Add(pdf);
+        }
+        if(doc is not null)
+        {
+            Options.Add(doc);
+        }
+        if(html is not null)
+        {
+            Options.Add(html);
+        }
     }
 
     public void OnGet()

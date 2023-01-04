@@ -16,6 +16,10 @@ builder.Services.AddOptions<WebHookSettings>()
 
             return true;
         }, "URL length is too short.")
+   .Validate(webHookSettings =>
+        {
+            return webHookSettings.WebhookUrl.StartsWith("https://");
+        }, "WebHookUrl must start with https://")
     .ValidateOnStart();
 
 builder.Services.AddSingleton(resolver =>

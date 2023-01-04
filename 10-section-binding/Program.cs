@@ -24,11 +24,11 @@ var htmlOptions = configuration.GetSection("html")
 WriteOptions(htmlOptions);
 
 
-void WriteOptions(FileOptions options)
+void WriteOptions(FileOptions? options)
 {
-    Console.WriteLine($"{options.FileExtension} fileExtension: {options.FileExtension}");
-    Console.WriteLine($"{options.FileExtension} OutputDir: {options.OutputDir}");
-    Console.WriteLine($"{options.FileExtension} TemplateFile: {options.TemplateFile}");
+    Console.WriteLine($"{options?.FileExtension} fileExtension: {options?.FileExtension}");
+    Console.WriteLine($"{options?.FileExtension} OutputDir: {options?.OutputDir}");
+    Console.WriteLine($"{options?.FileExtension} TemplateFile: {options?.TemplateFile}");
 }
 
 
