@@ -24,7 +24,7 @@ style: |
   @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css'
 
 ---
-<!-- footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
+<!-- _footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
 
 ![bg left](./img/dotnet-logo.png)
 
