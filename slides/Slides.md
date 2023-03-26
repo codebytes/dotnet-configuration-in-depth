@@ -24,8 +24,9 @@ style: |
   @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css'
 
 ---
+<!-- footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
 
-![bg left](./img/dotnet.jpg)
+![bg left](./img/dotnet-logo.png)
 
 # .NET Configuration in Depth
 ## Chris Ayers
@@ -45,7 +46,7 @@ style: |
 
 ---
 
-![bg right:40% auto](./img/dotnet.jpg)
+![bg right:40% auto](./img/dotnet-logo.png)
 
 # Agenda
 - What is configuration?
