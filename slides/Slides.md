@@ -21,8 +21,13 @@ style: |
     width:100%;
   }
   
-  @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css'
+  
+  .fa-twitter { color: aqua; }
+  .fa-mastodon { color: purple; }
+  .fa-linkedin { color: blue; }
+  .fa-window-maximize { color: skyblue; }
 
+  @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ---
 <!-- _footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
 
@@ -143,7 +148,7 @@ style: |
 
 ---
 
-# .NET 6/ASP.NET Configuration
+# .NET Core/5/6/7/8 <br /> ASP.NET Configuration
 
 
 ![bg left fit 90%](./img/gears.png)
