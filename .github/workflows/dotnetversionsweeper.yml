@@ -21,7 +21,7 @@ jobs:
 
     # Checkout the repo into the workspace within the VM
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     # If triggered manually, print the reason why
     - name: 'Print manual run reason'
