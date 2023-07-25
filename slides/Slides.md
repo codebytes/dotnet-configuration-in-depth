@@ -70,22 +70,22 @@ style: |
 <div>
 
 ## <i class="fa fa-sliders"></i> Settings
-- Retry Times
-- Queue Length 
+* Retry Times
+* Queue Length 
 
 </div>
 <div>
 
 ## <i class="fa-sharp fa-solid fa-flag"></i> Feature Flags
-- Per User
-- Percentage
+* Per User
+* Percentage
 
 </div>
 <div>
 
 ## <i class="fa fa-key"></i> Secrets
-- Connection Strings
-- App Registration
+* Connection Strings
+* App Registration
 
 </div>
 </div>
@@ -208,18 +208,18 @@ style: |
 <div>
 
 ## <i class="fa fa-terminal"></i> Console
-- No Configuration 
+* No Configuration 
 
 </div>
 <div>
 
 ## <i class="fa-regular fa-window-maximize"></i> ASP.NET
-- JSON
-  - appsettings.json
-  - appsettings.{Environment}.json
-- Environment Variables
-- Command Line Variables
-- User Secrets
+* JSON
+  * appsettings.json
+  * appsettings.{Environment}.json
+* Environment Variables
+* Command Line Variables
+* User Secrets
 
 </div>
 </div>
@@ -233,22 +233,22 @@ style: |
 <div>
 
 ## File-based
-- JSON 
-- XML 
-- INI 
-- Key-per-file
+* JSON 
+* XML 
+* INI 
+* Key-per-file
 
 </div>
 <div>
 
 ## Others
 
-- Environment variables 
-- Command-line
-- In-Memory
-- User Secrets
-- Azure Key Vault
-- Azure App Configuration
+* Environment variables 
+* Command-line
+* In-Memory
+* User Secrets
+* Azure Key Vault
+* Azure App Configuration
 
 </div>
 </div>
