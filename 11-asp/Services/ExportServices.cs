@@ -9,10 +9,14 @@ public interface IExportService
 public class ExportService : IExportService
 {
     private readonly MarkdownConverter _markdown;
-    public ExportService(IOptionsMonitor<MarkdownConverter> markdown)
+    public ExportService(IOptions<MarkdownConverter> markdown)
     {
-        _markdown = markdown.CurrentValue;
+        _markdown = markdown.Value;
     }
+    // public ExportService(IOptionsMonitor<MarkdownConverter> markdown)
+    // {
+    //     _markdown = markdown.CurrentValue;
+    // }
 
     public MarkdownConverter GetMarkdownConverter()
     {

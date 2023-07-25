@@ -7,7 +7,7 @@ builder.Services.Configure<MarkdownConverter>(builder.Configuration.GetSection("
 
 //builder.Services.AddSingleton<IExportService, ExportService>();
 builder.Services.AddTransient<IExportService, ExportService>();
-//builder.Services.AddScoped<IExportService, ExportService>();
+// builder.Services.AddScoped<IExportService, ExportService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

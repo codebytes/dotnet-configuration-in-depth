@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "HSTS"
-    ]
+    ],
+    "dotnet.defaultSolution": "net-framework-example/NetFrameworkSample.sln"
 }
