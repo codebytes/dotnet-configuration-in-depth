@@ -5,7 +5,8 @@ using Azure.Security.KeyVault;
 using Azure.Security.KeyVault.Secrets;
 
 var builder = WebApplication.CreateBuilder(args);
-var keyVaultUri = builder.Configuration["KeyVaultUri"] ?? throw new InvalidOperationException("KeyVaultUri is missing from configuration");
+var keyVaultName = builder.Configuration["KeyVaultName"] ?? throw new ArgumentNullException("KeyVaultName");
+var keyVaultUri = $"https://{keyVaultName}.vault.azure.net/";
 
 //Connect to your KeyVault using the URI
 builder.Configuration
