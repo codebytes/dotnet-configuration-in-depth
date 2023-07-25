@@ -335,12 +335,38 @@ style: |
 <div class="columns">
 <div>
 
-The **Interface Segregation Principle (ISP)**  or Encapsulation: Scenarios (classes) that depend on configuration settings depend only on the configuration settings that they use.
+**Interface Segregation Principle (ISP)**: Scenarios (classes) that depend on configuration settings depend only on the configuration settings that they use.
 
 </div>
 <div>
 
 **Separation of Concerns** : Settings for different parts of the app aren't dependent or coupled to one another.
+
+</div>
+</div>
+
+---
+
+# An Options Class
+
+<div class="columns">
+<div>
+
+- Must be non-abstract with a public parameterless constructor
+- Contain public read-write properties to bind (fields are not bound)
+
+
+</div>
+<div>
+
+```csharp
+public class FileOptions
+{
+    public string FileExtension { get; set; } ="";
+    public string OutputDir { get; set; } ="";
+    public string TemplateFile { get; set; } ="";
+}
+```
 
 </div>
 </div>
