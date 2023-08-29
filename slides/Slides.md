@@ -27,7 +27,7 @@ style: |
   .fa-linkedin { color: blue; }
   .fa-window-maximize { color: skyblue; }
 
-  @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+  @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'
 ---
 <!-- _footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
 
@@ -43,9 +43,9 @@ style: |
 ## Chris Ayers
 ### Senior Customer Engineer<br>Microsoft
 
-<i class="fa-brands fa-x"></i> ~~Twitter~~ : @Chris\_L\_Ayers
+<i class="fa-brands fa-x-twitter"></i> ~~Twitter~~ : @Chris\_L\_Ayers
 <i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
-<i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
+<i class="fa-brands fa-linkedin"></i> LinkedIn: [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
 <i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
 <i class="fa-brands fa-github"></i> GitHub: [Codebytes](https://github.com/codebytes)
 
