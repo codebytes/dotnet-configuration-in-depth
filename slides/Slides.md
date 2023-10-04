@@ -1,34 +1,9 @@
 ---
 marp: true
-theme: default
+theme: custom-default
 footer: 'https://chris-ayers.com'
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
-  .columns3 {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-  } 
-  img[alt~="center"] {
-    display: block;
-    margin: 0 auto;
-  }
-  table {
-    width:100%;
-  }
-  
-  
-  .fa-twitter { color: aqua; }
-  .fa-mastodon { color: purple; }
-  .fa-linkedin { color: blue; }
-  .fa-window-maximize { color: skyblue; }
-
-  @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'
 ---
+
 <!-- _footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
 
 ![bg left](./img/dotnet-logo.png)
