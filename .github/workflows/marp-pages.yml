@@ -25,14 +25,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Copy images
-        run: mkdir build && cp -R slides/img build/img
+        run: mkdir build && cp -R slides/img build/img && cp -R slides/themes build/themes
 
       - name: Marp Build (README)
-        uses: docker://marpteam/marp-cli:v1.7.0
+        uses: docker://marpteam/marp-cli:latest
         with:
-          args: slides/Slides.md -o build/index.html --html
+          args: --theme-set slides/themes -o build/index.html --html -- slides/Slides.md
         env:
           MARP_USER: root:root
       - name: Setup Pages
