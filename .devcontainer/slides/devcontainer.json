@@ -1,0 +1,39 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "Slides",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"features": {
+	},
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"markdown.marp.enableHtml": true,
+				"markdown.marp.themes": [
+					"./slides/themes/custom.css",
+					"./slides/themes/custom-default.css",
+					"./slides/themes/custom-gaia.css",
+					"./slides/themes/custom-uncover.css"
+				]
+			},
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"yzhang.markdown-all-in-one",
+				"marp-team.marp-vscode",
+				"bierner.markdown-mermaid",
+				"hediet.vscode-drawio"
+			]
+		}
+	}
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
