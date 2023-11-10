@@ -1,0 +1,10 @@
+version: '3.4'
+services:
+  dev-env:
+    container_name: dev-env
+    build:
+      context: .
+    volumes:
+      - "../..:/workspace"
+    stdin_open: true # docker run -i
+    tty: true # docker run -t

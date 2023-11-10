@@ -24,6 +24,7 @@
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
+				"ms-dotnettools.csdevkit",
 				"ms-dotnettools.csharp",
 				"ms-vscode.azurecli",
 				"ms-azuretools.vscode-bicep",
