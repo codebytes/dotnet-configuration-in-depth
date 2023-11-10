@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "_17_validation": {
+    "Validation": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

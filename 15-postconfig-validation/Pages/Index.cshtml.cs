@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace _17_validation.Pages;
+namespace Validation.Pages;
 
 public class IndexModel : PageModel
 {
