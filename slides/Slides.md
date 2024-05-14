@@ -18,7 +18,7 @@ footer: 'https://chris-ayers.com'
 ## Chris Ayers
 ### Senior Customer Engineer<br>Microsoft
 
-<i class="fa-brands fa-x-twitter"></i> ~~Twitter~~ : @Chris\_L\_Ayers
+<i class="fa-brands fa-twitter"></i> Twitter : @Chris\_L\_Ayers
 <i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
 <i class="fa-brands fa-linkedin"></i> LinkedIn: [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
 <i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
