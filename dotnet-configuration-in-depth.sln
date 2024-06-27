@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApp (1)", "09b-altern
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApp (2)", "10d-sample-section-binding\SampleApp.csproj", "{B58FF4B4-AE9D-4DFC-B71A-7D55DE15ABE9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApp (3)", "06-console-config-sections-cmdline-mappings\SampleApp.csproj", "{7C1F4351-BA43-4654-B71C-46B3651D49BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApp (3)", "06b-console-config-sections-cmdline-mappings\SampleApp.csproj", "{7C1F4351-BA43-4654-B71C-46B3651D49BF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApp (4)", "10-sample-flat-setup\SampleApp.csproj", "{AD0640A1-8D9E-48FD-B662-77295A18E717}"
 EndProject
@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleAsp (1)", "12-asp-nam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApp (13)", "03-console-configuration-cmdline\SampleApp.csproj", "{0EA495ED-08F5-45CA-9ADF-4E81DBF24F53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApp (14)", "05-console-config-sections\SampleApp.csproj", "{B63DC3DD-FF36-4723-818B-2BB8D81C9ECB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleApp (14)", "05-console-configuration-in-memory\SampleApp.csproj", "{B63DC3DD-FF36-4723-818B-2BB8D81C9ECB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
