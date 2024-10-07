@@ -187,30 +187,31 @@ footer: 'https://chris-ayers.com'
 <div class="columns">
 <div>
 
-![width:500px](./img/json-config.png)
+```json
+{
+  "Parent": {
+    "FavoriteNumber": 7,
+    "Child": {
+      "Name": "Example",
+      "GrandChild": {
+        "Age": 3
+      }
+    }
+  }
+}
+```
 
 </div>
 <div>
 
-![width:500px](./img/config-flattened.png)
 
-</div>
-</div>
-
----
-
-# Binding a Section
-
-<div class="columns">
-<div>
-
-![width:500px](./img/class-binding.png)
-
-</div>
-<div>
-
-![width:500px](./img/bind-section.png)
-
+```json
+{
+  "Parent:FavoriteNumber": 7,
+  "Parent:Child:Name": "Example",
+  "Parent:Child:GrandChild:Age": 3
+}
+```
 </div>
 </div>
 
@@ -218,22 +219,33 @@ footer: 'https://chris-ayers.com'
 
 # Out of the Box
 
-<div class="columns">
+<div class="columns3">
 <div>
 
 ## <i class="fa fa-terminal"></i> Console
-* No Configuration 
+- No Configuration 
+
+</div>
+<div>
+
+## .NET Generic Host
+- JSON
+  - appsettings.json
+  - appsettings.{Environment}.json
+- User Secrets
+- Environment Variables
+- Command Line Variables
 
 </div>
 <div>
 
 ## <i class="fa-regular fa-window-maximize"></i> ASP.NET
-* JSON
-  * appsettings.json
-  * appsettings.{Environment}.json
-* Environment Variables
-* Command Line Variables
-* User Secrets
+- JSON
+  - appsettings.json
+  - appsettings.{Environment}.json
+- User Secrets
+- Environment Variables
+- Command Line Variables
 
 </div>
 </div>
@@ -267,37 +279,120 @@ footer: 'https://chris-ayers.com'
 </div>
 </div>
 
-
 ---
 
 # Json Provider
 
-<div class="columns">
+<div class="columns21">
 <div>
 
-![width:500px](./img/json-config.png)
+```xml
+<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+```
+```cs
+IHostEnvironment env = builder.Environment;
+
+builder.Configuration
+  .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+  .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true);
+```
 
 </div>
 <div>
 
-![width:500px](./img/json-provider.png)
+```json
+{
+    "SecretKey": "Secret key value",
+    "TransientFaultHandlingOptions": {
+        "Enabled": true,
+        "AutoRetryDelay": "00:00:07"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft": "Warning",
+            "Microsoft.Hosting.Lifetime": "Information"
+        }
+    }
+}
+```
 
 </div>
 </div>
 
 ---
 
-# Xml Provider
+# XML Provider
 
-<div class="columns">
+<div class="columns21">
 <div>
 
-![width:500px](./img/xml-config.png)
+```xml
+<PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="8.0.0" />
+```
+```cs
+IHostEnvironment env = builder.Environment;
+
+builder.Configuration
+  .AddXmlFile("appsettings.xml", optional: true, reloadOnChange: true)
+  .AddXmlFile("repeating-example.xml", optional: true, reloadOnChange: true);
+```
 
 </div>
 <div>
 
-![width:500px](./img/xml-provider.png)
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <SecretKey>Secret key value</SecretKey>
+  <TransientFaultHandlingOptions>
+    <Enabled>true</Enabled>
+    <AutoRetryDelay>00:00:07</AutoRetryDelay>
+  </TransientFaultHandlingOptions>
+  <Logging>
+    <LogLevel>
+      <Default>Information</Default>
+      <Microsoft>Warning</Microsoft>
+    </LogLevel>
+  </Logging>
+</configuration>
+```
+
+</div>
+</div>
+
+---
+
+# INI Provider
+
+<div class="columns21">
+<div>
+
+```xml
+<PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="8.0.0" />
+```
+```cs
+IHostEnvironment env = builder.Environment;
+
+builder.Configuration
+  .AddIniFile("appsettings.ini", optional: true, reloadOnChange: true)
+  .AddIniFile($"appsettings.{env.EnvironmentName}.ini", true, true);
+```
+
+</div>
+<div>
+
+```ini
+SecretKey="Secret key value"
+
+[TransientFaultHandlingOptions]
+Enabled=True
+AutoRetryDelay="00:00:07"
+
+[Logging:LogLevel]
+Default=Information
+Microsoft=Warning
+```
 
 </div>
 </div>
@@ -309,34 +404,11 @@ footer: 'https://chris-ayers.com'
 <div class="columns">
 <div>
 
-![width:500px](./img/env-config.png)
-
 </div>
 <div>
 
-![width:500px](./img/env-provider.png)
-
 </div>
 </div>
-
----
-
-# Command Line Variables
-
-![width:500px](./img/cmdline-provider.png)
-
-
----
-
-# Key-per-file
-
-![width:500px](./img/keyperfile-provider.png)
-
----
-
-# In Memory
-
-![width:500px](./img/inmemory-provider.png)
 
 ---
 
