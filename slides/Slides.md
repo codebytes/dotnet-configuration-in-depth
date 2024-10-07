@@ -26,6 +26,12 @@ footer: 'https://chris-ayers.com'
 
 ---
 
+# Session Feedback
+
+![bg right fit](./img/session-feedback.png)
+
+---
+
 ![bg right:40% auto](./img/dotnet-logo.png)
 
 # Agenda
@@ -111,12 +117,45 @@ footer: 'https://chris-ayers.com'
 <div class="columns">
 <div>
 
-![height:400px](./img/net-framework-config.png)
+```xml
+  <appSettings>
+    <add key="webpages:Version" value="3.0.0.0" />
+    <add key="webpages:Enabled" value="false" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+    <add key="Greeting" value="Hello, Everyone!" />
+    <add key="CurrentMajorDotNetVersion" value="6" />
+  </appSettings>
+  <system.web>
+    <compilation debug="true" targetFramework="4.7.2" />
+    <httpRuntime targetFramework="4.7.2" />
+  </system.web>
+```
 
 </div>
 <div>
 
-![height:400px](./img/net-framework-static.png)
+```xml
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <connectionStrings>
+    <add name="MyDB"
+      connectionString="Data Source=ReleaseSQLServer..."
+      xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
+  </connectionStrings>
+
+```
+
+
+```cs
+  private string greeting = "";
+  private int majorDotNetVersion = 0;
+  public HomeController()
+  {
+      greeting = ConfigurationManager.AppSettings["Greeting"];
+      string ver = ConfigurationManager.AppSettings["CurrentMajorDotNetVersion"]
+      majorDotNetVersion = Int32.Parse(ver);
+  }
+```
 
 </div>
 </div>
@@ -363,6 +402,12 @@ public class FileOptions
 ---
 
 # Questions?
+
+---
+
+# Session Feedback
+
+![bg right fit](./img/session-feedback.png)
 
 ---
 
