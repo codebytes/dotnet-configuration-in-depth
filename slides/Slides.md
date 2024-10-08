@@ -146,7 +146,7 @@ footer: 'https://chris-ayers.com'
 ```
 
 
-```cs
+```csharp
   private string greeting = "";
   private int majorDotNetVersion = 0;
   public HomeController()
@@ -182,7 +182,59 @@ footer: 'https://chris-ayers.com'
 
 ---
 
-# Keys are flattened
+# Binding
+
+<div class="columns">
+<div>
+
+```json
+{
+    "Settings": {
+        "KeyOne": 1,
+        "KeyTwo": true,
+        "KeyThree": {
+            "Message": "Oh, that's nice...",
+            "SupportedVersions": {
+                "v1": "1.0.0",
+                "v3": "3.0.7"
+            }
+        }
+    }
+}
+```
+
+</div>
+<div>
+
+```csharp
+public sealed class Settings
+{
+    public required int KeyOne { get; set; }
+    public required bool KeyTwo { get; set; }
+    public required NestedSettings KeyThree { get; set; };
+}
+public sealed class NestedSettings
+{
+    public required string Message { get; set; };
+}
+
+IConfigurationRoot config = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json")
+    .Build();
+    
+Settings? settings = 
+  config.GetRequiredSection("Settings")
+    .Get<Settings>();
+
+```
+
+</div>
+</div>
+
+---
+
+# Hierarchical Configuration Data
+## Keys are Flattened
 
 <div class="columns">
 <div>
@@ -289,7 +341,7 @@ footer: 'https://chris-ayers.com'
 ```xml
 <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
 ```
-```cs
+```csharp
 IHostEnvironment env = builder.Environment;
 
 builder.Configuration
@@ -330,7 +382,7 @@ builder.Configuration
 ```xml
 <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="8.0.0" />
 ```
-```cs
+```csharp
 IHostEnvironment env = builder.Environment;
 
 builder.Configuration
@@ -371,7 +423,7 @@ builder.Configuration
 ```xml
 <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="8.0.0" />
 ```
-```cs
+```csharp
 IHostEnvironment env = builder.Environment;
 
 builder.Configuration
@@ -404,9 +456,55 @@ Microsoft=Warning
 <div class="columns">
 <div>
 
+- Typically used to override settings found in appsettings.json or user secrets
+- the : delimieter doesn't work for Hierarchical data on all platforms
+- the `__` delimieter is used instead of `:`
+
 </div>
 <div>
 
+```csharp
+public class TransientFaultHandlingOptions
+{
+    public bool Enabled { get; set; }
+    public TimeSpan AutoRetryDelay { get; set; }
+}
+```
+
+```bash
+set SecretKey="Secret key from environment"
+set TransientFaultHandlingOptions__Enabled="true"
+set TransientFaultHandlingOptions__AutoRetryDelay="00:00:13"
+```
+
+</div>
+</div>
+
+---
+
+# Environment Variables
+
+<div class="columns">
+<div>
+
+- There are built-in prefixes, like 
+  - ASPNETCORE_ for ASP.NET Core
+  - DOTNET_ for .NET Core
+- You can provide your own prefix
+  
+</div>
+<div>
+
+```csharp
+builder.Configuration.AddEnvironmentVariables(
+  prefix: "MyCustomPrefix_");
+```
+```bash
+set MyCustomPrefix_MyKey="My key with MyCustomPrefix_"
+set MyCustomPrefix_Position__Title=Editor_with_custom
+set MyCustomPrefix_Position__Name=Environment
+dotnet run
+```
 </div>
 </div>
 
