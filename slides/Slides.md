@@ -26,12 +26,6 @@ footer: 'https://chris-ayers.com'
 
 ---
 
-# Session Feedback
-
-![bg right fit](./img/session-feedback.png)
-
----
-
 ![bg right:40% auto](./img/dotnet-logo.png)
 
 # Agenda
@@ -572,12 +566,6 @@ public class FileOptions
 ---
 
 # Questions?
-
----
-
-# Session Feedback
-
-![bg right fit](./img/session-feedback.png)
 
 ---
 
