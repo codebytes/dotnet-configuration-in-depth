@@ -17,7 +17,7 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"markdown.marp.enableHtml": true,
+				"markdown.marp.html": "all",
 				"markdown.marp.themes": [
 					"./slides/themes/custom-default.css"
 				]
