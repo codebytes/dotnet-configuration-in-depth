@@ -11,7 +11,7 @@ builder.Configuration.AddAzureAppConfiguration(options =>
         .ConfigureRefresh(refresh =>
                 {
                     refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
-                        .SetCacheExpiration(new TimeSpan(0, 0, 5));
+                        .SetRefreshInterval(new TimeSpan(0, 0, 5));
                 });
 });
 
