@@ -2,9 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Validation</RootNamespace>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\16-aspire.ServiceDefaults\16-aspire.ServiceDefaults.csproj" />
+  </ItemGroup>
 
 </Project>

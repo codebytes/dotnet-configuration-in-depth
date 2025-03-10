@@ -3,10 +3,12 @@
 {
 	"name": "C# (.NET)",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:1-9.0-bookworm",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		"ghcr.io/devcontainers/features/azure-cli:1": {}
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/powershell:1": {}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [5000, 5001],
@@ -17,7 +19,8 @@
 	},
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "dotnet restore",
-	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && dotnet dev-certs https --trust",
+	"onCreateCommand": "dotnet new install Aspire.ProjectTemplates::9.1.0 --force",
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.

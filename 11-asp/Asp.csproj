@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Validation</RootNamespace>
+    <RootNamespace>SampleAsp</RootNamespace>
   </PropertyGroup>
 
 </Project>
