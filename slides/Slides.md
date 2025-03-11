@@ -6,10 +6,11 @@ footer: 'https://chris-ayers.com'
 
 <!-- _footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
 
-![bg left](./img/dotnet-logo.png)
-
 # .NET Configuration in Depth
+
 ## Chris Ayers
+
+![bg left](./img/dotnet-logo.png)
 
 ---
 
@@ -23,7 +24,7 @@ footer: 'https://chris-ayers.com'
 <i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
 <i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
 <i class="fa-brands fa-github"></i> GitHub: [Codebytes](https://github.com/codebytes)
-<i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
+<i class="fa-brands fa-mastodon"></i> Mastodon: [@Chrisayers@hachyderm.io](https://hachyderm.io/@Chrisayers)
 ~~<i class="fa-brands fa-twitter"></i> Twitter: @Chris_L_Ayers~~
 
 ---
@@ -31,6 +32,7 @@ footer: 'https://chris-ayers.com'
 ![bg right:40% auto](./img/dotnet-logo.png)
 
 # Agenda
+
 - What is configuration?
 - How does .NET Framework handle configuration?
 - How does .NET and ASP.NET handle configuration?
@@ -47,22 +49,25 @@ footer: 'https://chris-ayers.com'
 <div>
 
 ## <i class="fa fa-sliders"></i> Settings
-* Retry Times
-* Queue Length 
+
+- Retry Times
+- Queue Length
 
 </div>
 <div>
 
 ## <i class="fa-sharp fa-solid fa-flag"></i> Feature Flags
-* Per User
-* Percentage
+
+- Per User
+- Percentage
 
 </div>
 <div>
 
 ## <i class="fa fa-key"></i> Secrets
-* Connection Strings
-* App Registration
+
+- Connection Strings
+- App Registration
 
 </div>
 </div>
@@ -98,13 +103,13 @@ footer: 'https://chris-ayers.com'
 
 # Web.Config
 
-* Limited to Key\-Value string pairs
-* Accessed through a static ConfigurationManager Class
-* Dependency Injection was not provided out of the box
-* Transformation through difficult syntax
-  * Slow Cheetah
-* Hard to unit test
-* Easy to leak secrets
+- Limited to Key\-Value string pairs
+- Accessed through a static ConfigurationManager Class
+- Dependency Injection was not provided out of the box
+- Transformation through difficult syntax
+  - Slow Cheetah
+- Hard to unit test
+- Easy to leak secrets
 
 ---
 
@@ -141,7 +146,6 @@ footer: 'https://chris-ayers.com'
 
 ```
 
-
 ```csharp
   private string greeting = "";
   private int majorDotNetVersion = 0;
@@ -160,7 +164,6 @@ footer: 'https://chris-ayers.com'
 
 # .NET Core/5/6/7/8 <br /> ASP.NET Configuration
 
-
 ![bg left fit 90%](./img/gears.png)
 
 ---
@@ -172,7 +175,6 @@ footer: 'https://chris-ayers.com'
 ---
 
 # Order Matters
-
 
 ![center width:980](./img/configuration-source.png)
 
@@ -230,6 +232,7 @@ Settings? settings =
 ---
 
 # Hierarchical Configuration Data
+
 ## Keys are Flattened
 
 <div class="columns">
@@ -252,7 +255,6 @@ Settings? settings =
 </div>
 <div>
 
-
 ```json
 {
   "Parent:FavoriteNumber": 7,
@@ -260,6 +262,7 @@ Settings? settings =
   "Parent:Child:GrandChild:Age": 3
 }
 ```
+
 </div>
 </div>
 
@@ -271,12 +274,14 @@ Settings? settings =
 <div>
 
 ## <i class="fa fa-terminal"></i> Console
-- No Configuration 
+
+- No Configuration
 
 </div>
 <div>
 
 ## .NET Generic Host
+
 - JSON
   - appsettings.json
   - appsettings.{Environment}.json
@@ -288,6 +293,7 @@ Settings? settings =
 <div>
 
 ## <i class="fa-regular fa-window-maximize"></i> ASP.NET
+
 - JSON
   - appsettings.json
   - appsettings.{Environment}.json
@@ -302,27 +308,27 @@ Settings? settings =
 
 # Configuration Providers
 
-
 <div class="columns">
 <div>
 
 ## File-based
-* JSON 
-* XML 
-* INI 
-* Key-per-file
+
+- JSON
+- XML
+- INI
+- Key-per-file
 
 </div>
 <div>
 
 ## Others
 
-* Environment variables 
-* Command-line
-* In-Memory
-* User Secrets
-* Azure Key Vault
-* Azure App Configuration
+- Environment variables
+- Command-line
+- In-Memory
+- User Secrets
+- Azure Key Vault
+- Azure App Configuration
 
 </div>
 </div>
@@ -337,6 +343,7 @@ Settings? settings =
 ```xml
 <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
 ```
+
 ```csharp
 IHostEnvironment env = builder.Environment;
 
@@ -378,6 +385,7 @@ builder.Configuration
 ```xml
 <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="8.0.0" />
 ```
+
 ```csharp
 IHostEnvironment env = builder.Environment;
 
@@ -419,6 +427,7 @@ builder.Configuration
 ```xml
 <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="8.0.0" />
 ```
+
 ```csharp
 IHostEnvironment env = builder.Environment;
 
@@ -483,7 +492,7 @@ set TransientFaultHandlingOptions__AutoRetryDelay="00:00:13"
 <div class="columns">
 <div>
 
-- There are built-in prefixes, like 
+- There are built-in prefixes, like
   - ASPNETCORE_ for ASP.NET Core
   - DOTNET_ for .NET Core
 - You can provide your own prefix
@@ -495,12 +504,14 @@ set TransientFaultHandlingOptions__AutoRetryDelay="00:00:13"
 builder.Configuration.AddEnvironmentVariables(
   prefix: "MyCustomPrefix_");
 ```
+
 ```bash
 set MyCustomPrefix_MyKey="My key with MyCustomPrefix_"
 set MyCustomPrefix_Position__Title=Editor_with_custom
 set MyCustomPrefix_Position__Name=Environment
 dotnet run
 ```
+
 </div>
 </div>
 
@@ -534,7 +545,6 @@ dotnet run
 
 - Must be non-abstract with a public parameterless constructor
 - Contain public read-write properties to bind (fields are not bound)
-
 
 </div>
 <div>
@@ -576,11 +586,13 @@ public class FileOptions
 
 ## Resources
 
-#### GitHub Repo
-#### https://github.com/codebytes/dotnet-configuration-in-depth
+### GitHub Repo
 
-#### Blog
-#### https://chris-ayers.com
+- [https://github.com/codebytes/dotnet-configuration-in-depth](https://github.com/codebytes/dotnet-configuration-in-depth)
+
+### Docs
+
+- [.NET Configuration Docs](https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration)
 
 </div>
 
@@ -594,7 +606,7 @@ public class FileOptions
 <i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
 <i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
 <i class="fa-brands fa-github"></i> GitHub: [Codebytes](https://github.com/codebytes)
-<i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
+<i class="fa-brands fa-mastodon"></i> Mastodon: [@Chrisayers@hachyderm.io](https://hachyderm.io/@Chrisayers)
 ~~<i class="fa-brands fa-twitter"></i> Twitter: @Chris_L_Ayers~~
 
 </div>
