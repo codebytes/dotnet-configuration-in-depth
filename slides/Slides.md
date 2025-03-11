@@ -4,6 +4,10 @@ theme: custom-default
 footer: 'https://chris-ayers.com'
 ---
 
+![bg](./img/intro.png)
+
+---
+
 <!-- _footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
 
 # .NET Configuration in Depth
@@ -462,8 +466,8 @@ Microsoft=Warning
 <div>
 
 - Typically used to override settings found in appsettings.json or user secrets
-- the : delimieter doesn't work for Hierarchical data on all platforms
-- the `__` delimieter is used instead of `:`
+- the : delimiter doesn't work for Hierarchical data on all platforms
+- the `__` delimiter is used instead of `:`
 
 </div>
 <div>
@@ -578,6 +582,10 @@ public class FileOptions
 ---
 
 # Questions?
+
+---
+
+![bg](img/feedback.png)
 
 ---
 
