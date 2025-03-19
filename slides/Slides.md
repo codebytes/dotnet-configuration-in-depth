@@ -4,10 +4,6 @@ theme: custom-default
 footer: 'https://chris-ayers.com'
 ---
 
-![bg](./img/intro.png)
-
----
-
 <!-- _footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
 
 # .NET Configuration in Depth
@@ -582,10 +578,6 @@ public class FileOptions
 ---
 
 # Questions?
-
----
-
-![bg](img/feedback.png)
 
 ---
 
