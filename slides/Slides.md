@@ -956,6 +956,88 @@ logger.LogInformation("Database timeout: {Timeout}s",
 
 ---
 
+# .NET Aspire
+
+---
+
+# .NET Aspire Configuration
+
+## Cloud-Native Configuration Made Simple
+
+- **Orchestration**: Centralized service management through AppHost
+- **Service Defaults**: Opinionated baseline for observability, health checks, and service discovery
+- **Configuration Layering**: Hierarchical configuration across distributed services
+- **Modern Patterns**: Built-in support for microservices and cloud-native apps
+
+---
+
+# Aspire Configuration Architecture
+
+<div class="columns">
+<div>
+
+## AppHost Project
+
+```csharp
+var builder = DistributedApplication.CreateBuilder(args);
+
+var apiService = builder.AddProject<Projects.ApiService>("apiservice");
+
+var workerService = builder.AddProject<Projects.WorkerService>("workerservice")
+    .WithEnvironment("Api:BaseUrl", apiService.GetEndpoint("https"));
+
+builder.Build().Run();
+```
+
+</div>
+<div>
+
+## Service Defaults
+
+```csharp
+public static class Extensions
+{
+    public static IHostApplicationBuilder AddServiceDefaults(this IHostApplicationBuilder builder)
+    {
+        builder.ConfigureOpenTelemetry();
+        builder.AddDefaultHealthChecks();
+        builder.Services.AddServiceDiscovery();
+        
+        builder.Services.ConfigureHttpClientDefaults(http => 
+        {
+            http.AddStandardResilienceHandler();
+            http.UseServiceDiscovery();
+        });
+        
+        return builder;
+    }
+}
+```
+
+</div>
+</div>
+
+---
+
+# Aspire Configuration Layering
+
+## Configuration Priority (Last Wins)
+
+1. **SharedConfig** `appsettings.json` - Cross-service shared settings  
+2. **Service-specific** `appsettings.json` - Per-service configuration  
+3. **Environment-specific** `appsettings.{Environment}.json`  
+4. **User Secrets** (Development only)  
+5. **AppHost Environment Variables** - `WithEnvironment()` calls  
+6. **Command Line Parameters** - Runtime overrides  
+
+```csharp
+// AppHost parameter injection
+var apiService = builder.AddProject<Projects.ApiService>("apiservice")
+    .WithEnvironment("Api:InjectedMessage", builder.AddParameter("ApiBaseMessage"));
+```
+
+---
+
 # Questions?
 
 ---
@@ -972,6 +1054,7 @@ logger.LogInformation("Database timeout: {Timeout}s",
 ### Docs
 
 - [.NET Configuration Docs](https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration)
+- [.NET Aspire Docs](https://learn.microsoft.com/en-us/dotnet/aspire/)
 
 </div>
 
