@@ -6,7 +6,7 @@ footer: 'https://chris-ayers.com'
 
 <!-- _footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
 
-# .NET Configuration in Depth
+# Modern .NET Configuration
 
 ## Chris Ayers
 
