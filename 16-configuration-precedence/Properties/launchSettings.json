@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "ConfigPrecedence": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Precedence__Setting1": "From launchSettings.json env var",
+        "Precedence__SettingFromLaunch": "Set ONLY via launchSettings.json"
+      }
+    }
+  }
+}

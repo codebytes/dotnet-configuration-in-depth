@@ -1,0 +1,38 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/01-generic-host/">
+    <Project Path="01-generic-host/GenericHost.csproj" />
+    <Project Path="02-basic-console/BasicConsole.csproj" />
+    <Project Path="03-json-config/JsonConfig.csproj" />
+    <Project Path="04-environment-variables/EnvironmentVariables.csproj" />
+    <Project Path="05-command-line-args/CommandLineArgs.csproj" />
+    <Project Path="06-in-memory-config/InMemoryConfig.csproj" />
+    <Project Path="07-user-secrets/UserSecrets.csproj" />
+    <Project Path="08-command-line-mappings/CommandLineMappings.csproj" />
+    <Project Path="09-configuration-sections/ConfigurationSections.csproj" />
+    <Project Path="10-hierarchical-config/HierarchicalConfig.csproj" />
+    <Project Path="11-flat-configuration/FlatConfiguration.csproj" />
+    <Project Path="12-section-binding/SectionBinding.csproj" />
+    <Project Path="13-named-options/NamedOptions.csproj" />
+    <Project Path="14-key-per-file/KeyPerFile.csproj" />
+    <Project Path="15-azure-keyvault/AzureKeyvault.csproj" />
+    <Project Path="16-configuration-precedence/ConfigurationPrecedence.csproj" />
+    <Project Path="17-dependency-injection/DependencyInjection.csproj" />
+    <Project Path="18-array-object-access/ArrayObjectAccess.csproj" />
+    <Project Path="19-environment-configs/EnvironmentConfigs.csproj" />
+    <Project Path="20-aspnet-options-pattern/AspNetOptionsPattern.csproj" />
+    <Project Path="21-azure-app-configuration/AzureAppConfiguration.csproj" />
+    <Project Path="22-app-config-advanced/AppConfigAdvanced.csproj" />
+    <Project Path="23-options-validation/OptionsValidation.csproj" />
+    <Project Path="24-configuration-reload/ConfigurationReload.csproj" />
+    <Project Path="25-logging-reload/LoggingReload.csproj" />
+    <Project Path="26-collections-binding/CollectionsBinding.csproj" />
+    <Project Path="27-secret-matrix/SecretMatrix.csproj" />
+    <Project Path="30-configuration-testing/ConfigurationTesting.csproj" />
+    <Project Path="31-integration-testing/IntegrationTesting.csproj" />
+  </Folder>
+</Solution>
