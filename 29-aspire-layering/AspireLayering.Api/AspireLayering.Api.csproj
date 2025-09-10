@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AspireLayering.ServiceDefaults\AspireLayering.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\AspireLayering.SharedConfig\AspireLayering.SharedConfig.csproj" />
+  </ItemGroup>
+</Project>
