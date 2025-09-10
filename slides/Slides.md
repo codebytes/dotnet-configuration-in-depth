@@ -573,7 +573,386 @@ public class FileOptions
 
 ---
 
+# Performance: IOptionsSnapshot vs IOptionsMonitor
+
+<div class="columns">
+<div>
+
+## <i class="fa fa-camera"></i> IOptionsSnapshot&lt;T&gt;
+
+- **Scoped lifetime** (per request)
+- **Recomputed each request**
+- **Supports named options**
+- **Best for web apps**
+
+```csharp
+public class MyController : Controller
+{
+    public MyController(IOptionsSnapshot<MyOptions> options)
+    {
+        // Fresh config per request
+        _options = options.Value;
+    }
+}
+```
+
+</div>
+<div>
+
+## <i class="fa fa-tv"></i> IOptionsMonitor&lt;T&gt;
+
+- **Singleton lifetime**
+- **Real-time change notifications**
+- **Supports named options**
+- **Best for background services**
+
+```csharp
+public class MyService : BackgroundService
+{
+    public MyService(IOptionsMonitor<MyOptions> monitor)
+    {
+        // React to config changes
+        monitor.OnChange(OnConfigChanged);
+    }
+}
+```
+
+</div>
+</div>
+
+---
+
+# Testing Configuration
+
+---
+
+# Configuration Testing Patterns
+
+<div class="columns">
+<div>
+
+## <i class="fa fa-flask"></i> Unit Testing
+
+```csharp
+[Test]
+public void Service_Uses_Configuration_Correctly()
+{
+    // Arrange
+    var config = new ConfigurationBuilder()
+        .AddInMemoryCollection(new[]
+        {
+            new KeyValuePair<string, string>("ApiUrl", "https://test.api"),
+            new KeyValuePair<string, string>("Timeout", "30")
+        })
+        .Build();
+    
+    var options = Options.Create(config.Get<ApiOptions>());
+    var service = new ApiService(options);
+    
+    // Act & Assert
+    Assert.That(service.BaseUrl, Is.EqualTo("https://test.api"));
+}
+```
+
+</div>
+<div>
+
+## <i class="fa fa-cog"></i> Integration Testing
+
+```csharp
+public class TestWebApplicationFactory<TProgram> 
+    : WebApplicationFactory<TProgram> where TProgram : class
+{
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    {
+        builder.ConfigureAppConfiguration(config =>
+        {
+            config.AddInMemoryCollection(new[]
+            {
+                new KeyValuePair<string, string>("Database:ConnectionString", 
+                    "Server=localhost;Database=TestDb;"),
+                new KeyValuePair<string, string>("ExternalApi:BaseUrl", 
+                    "https://mock-api.test")
+            });
+        });
+    }
+}
+```
+
+</div>
+</div>
+
+---
+
+# Configuration Validation
+
+<div class="columns">
+<div>
+
+## <i class="fa fa-check-circle"></i> Data Annotations
+
+```csharp
+public class DatabaseOptions
+{
+    [Required]
+    [Url]
+    public string ConnectionString { get; set; } = "";
+    
+    [Range(1, 300)]
+    public int CommandTimeoutSeconds { get; set; } = 30;
+    
+    [Required]
+    [RegularExpression(@"^[a-zA-Z0-9_]+$")]
+    public string DatabaseName { get; set; } = "";
+}
+
+// Register with validation
+services.AddOptions<DatabaseOptions>()
+    .Bind(configuration.GetSection("Database"))
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+```
+
+</div>
+<div>
+
+## <i class="fa fa-shield-alt"></i> Custom Validation
+
+```csharp
+public class DatabaseOptionsValidator : IValidateOptions<DatabaseOptions>
+{
+    public ValidateOptionsResult Validate(string name, DatabaseOptions options)
+    {
+        var failures = new List<string>();
+        
+        if (string.IsNullOrEmpty(options.ConnectionString))
+            failures.Add("ConnectionString is required");
+            
+        if (options.CommandTimeoutSeconds <= 0)
+            failures.Add("CommandTimeoutSeconds must be positive");
+            
+        if (!IsValidDatabaseName(options.DatabaseName))
+            failures.Add("Invalid database name format");
+            
+        return failures.Count > 0 
+            ? ValidateOptionsResult.Fail(failures)
+            : ValidateOptionsResult.Success;
+    }
+}
+
+// Register validator
+services.AddSingleton<IValidateOptions<DatabaseOptions>, DatabaseOptionsValidator>();
+```
+
+</div>
+</div>
+
+---
+
+# Validation at Startup
+
+<div class="columns">
+<div>
+
+## <i class="fa fa-rocket"></i> Fail Fast Pattern
+
+```csharp
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+
+// Configure options with validation
+builder.Services.AddOptions<ApiOptions>()
+    .Bind(builder.Configuration.GetSection("Api"))
+    .ValidateDataAnnotations()
+    .ValidateOnStart(); // Validates during app startup
+
+builder.Services.AddOptions<DatabaseOptions>()
+    .Bind(builder.Configuration.GetSection("Database"))
+    .Validate(options => !string.IsNullOrEmpty(options.ConnectionString), 
+              "Connection string cannot be empty")
+    .ValidateOnStart();
+
+var app = builder.Build();
+// App fails to start if validation fails
+```
+
+</div>
+<div>
+
+## <i class="fa fa-exclamation-triangle"></i> Benefits
+
+- **Early Detection**: Catch configuration errors at startup
+- **Clear Error Messages**: Know exactly what's wrong
+- **Prevents Runtime Failures**: No surprises in production
+- **Better DevEx**: Immediate feedback during development
+
+```csharp
+// Custom validation method
+services.AddOptions<MyOptions>()
+    .Bind(configuration.GetSection("MySection"))
+    .Validate(options => 
+    {
+        return options.ApiKey?.Length >= 10;
+    }, "ApiKey must be at least 10 characters")
+    .ValidateOnStart();
+```
+
+</div>
+</div>
+
+---
+
 # DEMOS
+
+---
+
+# Secrets Management Best Practices
+
+<div class="columns">
+<div>
+
+## <i class="fa fa-exclamation-triangle"></i> Don't
+
+- Store secrets in appsettings.json
+- Commit secrets to source control
+- Use production secrets in development
+- Log configuration values containing secrets
+
+</div>
+<div>
+
+## <i class="fa fa-check-circle"></i> Do
+
+- Use User Secrets for development
+- Use Azure Key Vault for production
+- Use environment variables for containers
+- Implement proper secret rotation
+- Validate secrets at startup
+
+</div>
+</div>
+
+---
+
+# Secrets by Environment
+
+<div class="columns3">
+<div>
+
+## <i class="fa fa-laptop-code"></i> Development
+
+- **User Secrets**
+  - Per-project secrets
+  - Stored outside source control
+  - Easy to manage locally
+
+```bash
+dotnet user-secrets set "ApiKey" "dev-key-123"
+```
+
+</div>
+<div>
+
+## <i class="fa fa-server"></i> Staging/Production
+
+- **Azure Key Vault**
+  - Centralized secret management
+  - Access policies and RBAC
+  - Audit logging
+  - Automatic rotation
+
+```csharp
+builder.Configuration.AddAzureKeyVault(
+  keyVaultUrl, credential);
+```
+
+</div>
+<div>
+
+## <i class="fa fa-cube"></i> Containers
+
+- **Environment Variables**
+  - Kubernetes secrets
+  - Docker secrets
+  - Service connection strings
+
+```bash
+docker run -e "ConnectionString=..." myapp
+```
+
+</div>
+</div>
+
+---
+
+# Environment-Specific Configuration Strategies
+
+<div class="columns">
+<div>
+
+## <i class="fa fa-layer-group"></i> Layered Configuration
+
+```csharp
+builder.Configuration
+    .AddJsonFile("appsettings.json")
+    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
+    .AddEnvironmentVariables()
+    .AddCommandLine(args);
+```
+
+**Order matters!** Later sources override earlier ones.
+
+</div>
+<div>
+
+## <i class="fa fa-code-branch"></i> Environment Patterns
+
+- **Development**: User Secrets + local files
+- **Staging**: Environment variables + Key Vault
+- **Production**: Key Vault + minimal env vars
+- **Testing**: In-memory configuration
+
+```csharp
+if (env.IsDevelopment())
+{
+    builder.Configuration.AddUserSecrets<Program>();
+}
+```
+
+</div>
+</div>
+
+---
+
+# Configuration Security Considerations
+
+<div class="columns">
+<div>
+
+## <i class="fa fa-shield-alt"></i> Prevent Secret Leakage
+
+- **Never log IConfiguration directly**
+- **Redact sensitive values in logs**
+- **Use IOptionsSnapshot/IOptionsMonitor**
+- **Implement custom configuration providers for sensitive data**
+
+</div>
+<div>
+
+## <i class="fa fa-eye-slash"></i> Secure Logging
+
+```csharp
+// ❌ DON'T - Exposes all configuration
+logger.LogInformation("Config: {Config}", 
+    JsonSerializer.Serialize(configuration));
+
+// ✅ DO - Log specific, non-sensitive values
+logger.LogInformation("Database timeout: {Timeout}s", 
+    dbOptions.CommandTimeout);
+```
+
+</div>
+</div>
 
 ---
 
