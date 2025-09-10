@@ -162,7 +162,7 @@ footer: 'https://chris-ayers.com'
 
 ---
 
-# .NET Core/5/6/7/8 <br /> ASP.NET Configuration
+# Modern .NET Configuration
 
 ![bg left fit 90%](./img/gears.png)
 
