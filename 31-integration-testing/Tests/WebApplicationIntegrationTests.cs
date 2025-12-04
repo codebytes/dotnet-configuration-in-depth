@@ -30,7 +30,7 @@ public class TestWebApplicationFactory : WebApplicationFactory<Program>
         if (Directory.GetFiles(currentDir, "*.csproj").Any())
             return currentDir;
             
-        // Navigate up from bin/Debug/net9.0 to project root
+        // Navigate up from bin/Debug/net10.0 to project root
         var projectDir = Directory.GetParent(currentDir)?.Parent?.Parent?.FullName;
         if (projectDir != null && Directory.GetFiles(projectDir, "*.csproj").Any())
             return projectDir;
@@ -180,7 +180,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
         if (Directory.GetFiles(currentDir, "*.csproj").Any())
             return currentDir;
             
-        // Navigate up from bin/Debug/net9.0 to project root
+        // Navigate up from bin/Debug/net10.0 to project root
         var projectDir = Directory.GetParent(currentDir)?.Parent?.Parent?.FullName;
         if (projectDir != null && Directory.GetFiles(projectDir, "*.csproj").Any())
             return projectDir;
