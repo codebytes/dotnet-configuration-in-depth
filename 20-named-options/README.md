@@ -1,14 +1,10 @@
-# 13 - Named Options
+## Overview
 
-Shows multiple named `FileOptions` registrations for `pdf`, `doc`, and `html` sections.
+- Registers multiple named FileOptions instances (pdf/doc/html).
+- Resolves each name via IOptionsSnapshot<T>.Get(name).
 
 ## Run
 
 ```powershell
-dotnet run --project 13-named-options
+dotnet run --project 20-named-options/NamedOptions.csproj
 ```
-
-## Key Points
-
-- `Configure<FileOptions>("name", section)` pattern.
-- Enables different configuration snapshots per logical name.

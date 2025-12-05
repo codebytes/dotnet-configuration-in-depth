@@ -1,24 +1,14 @@
-# 25 - Logging Level Live Reload
+## Overview
 
-Demonstrates dynamic reload of logging levels using `reloadOnChange` for `appsettings.json`.
+- Demonstrates live log level changes through configuration reload.
+- Lets you raise or lower Logging:LogLevel without restarting.
 
 ## Run
 
-```pwsh
-dotnet run --project 20-logging-reload
+```powershell
+dotnet run --project 25-logging-reload/LoggingReload.csproj
 ```
 
-While it runs, open `20-logging-reload/appsettings.json` and change:
+## Notes
 
-```json
-"Default": "Trace"
-```
-
-Save the file and observe additional log lines (Trace/Debug) begin to appear without restarting the process.
-
-## Key Teaching Points
-
-* The logging system listens for configuration reload token changes.
-* Lowering the log level (e.g., Information -> Trace) increases output immediately.
-* Raising the level reduces noise in real time.
-* Useful for operational diagnostics without redeploying.
+- Edit appsettings.json while the app runs to watch log output adjust immediately.

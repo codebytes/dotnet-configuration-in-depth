@@ -1,15 +1,10 @@
-# 02 - Basic Console
+## Overview
 
-Minimal .NET console template baseline. Used as a control sample before adding configuration providers.
+- Baseline .NET console sample with top-level statements.
+- Use as the control before layering configuration providers.
 
 ## Run
 
 ```powershell
-dotnet run --project 02-basic-console
+dotnet run --project 01-basic-console/BasicConsole.csproj
 ```
-
-## Key Points
-
-- Single `Program.cs` using top-level statements.
-- Prints "Hello, World!".
-- No configuration providers yet (contrast with later samples).

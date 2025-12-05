@@ -1,14 +1,10 @@
-# 11 - Flat Configuration
+## Overview
 
-Demonstrates a flat key/value scheme (no deep hierarchy) for tooling-style apps.
+- Uses a flat key/value structure for tooling scenarios.
+- Contrast with hierarchical samples that follow.
 
 ## Run
 
 ```powershell
-dotnet run --project 11-flat-configuration
+dotnet run --project 15-flat-configuration/FlatConfiguration.csproj
 ```
-
-## Key Points
-
-- Straightforward keys (e.g. `markdownStyle`).
-- Contrast with hierarchical samples that follow.

@@ -1,27 +1,10 @@
-# 14 - Key Per File Provider
+## Overview
 
-Reads individual config values from files in a directory using `AddKeyPerFile`.
-
-## Directory
-
-`keyPerFile/` contains one file per key. File name = key; file content = value.
+- Uses AddKeyPerFile to read secrets from the keyPerFile/ directory.
+- Great for Docker or Kubernetes mounted secrets.
 
 ## Run
 
 ```powershell
-dotnet run --project 14-key-per-file
+dotnet run --project 10-key-per-file/KeyPerFile.csproj
 ```
-
-### Environment Override Examples (PowerShell)
-
-```powershell
-$Env:ENVIRONMENT="qa"; dotnet run --project 14-key-per-file
-$Env:ENVIRONMENT="production"; dotnet run --project 14-key-per-file
-$Env:ENVIRONMENT=$NULL; dotnet run --project 14-key-per-file
-```
-
-## Key Points
-
-- Useful for Kubernetes secrets (mounted files).
-- `optional: true` allows directory absence without failure.
-- `GetDebugView()` demonstrates provider/value origins.

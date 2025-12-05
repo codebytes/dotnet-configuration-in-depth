@@ -1,21 +1,14 @@
-# 15 - Azure Key Vault
+## Overview
 
-Demonstrates using `AddAzureKeyVault` to pull secrets from Azure Key Vault.
-
-## Prerequisites
-
-- Logged into Azure CLI / identity with access.
-- Set `KeyVaultName` in environment or JSON.
+- Loads secrets from Azure Key Vault via DefaultAzureCredential.
+- Replaces local secrets with centralized storage.
 
 ## Run
 
 ```powershell
-dotnet run --project 15-azure-keyvault -- KeyVaultName=<your-vault-name>
+dotnet run --project 11-azure-keyvault/AzureKeyvault.csproj
 ```
 
-> Secrets in Key Vault appear as configuration keys; colon hierarchy often uses `--` or `--` to separate in naming (snake-case or double-dash patterns when naming inside vault).
+## Notes
 
-## Key Points
-
-- Uses `DefaultAzureCredential` (supports dev environments + managed identity).
-- Great for central secret management; avoids user secrets in shared environments.
+- Provide a vault name and ensure the executing identity has Key Vault access (e.g., Key Vault Secrets User).

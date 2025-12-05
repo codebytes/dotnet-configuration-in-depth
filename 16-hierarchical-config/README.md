@@ -1,14 +1,10 @@
-# 10 - Hierarchical Configuration
+## Overview
 
-Introduces nested objects (`pdf`, `doc`, `html`) for grouped configuration.
+- Models nested sections for pdf/doc/html outputs.
+- Highlights colon traversal across tree-shaped data.
 
 ## Run
 
 ```powershell
-dotnet run --project 10-hierarchical-config
+dotnet run --project 16-hierarchical-config/HierarchicalConfig.csproj
 ```
-
-## Key Points
-
-- Shows colon traversal for nested keys.
-- Helps motivate section binding & POCO mapping (12-section-binding).

@@ -1,17 +1,14 @@
-# 20 - ASP.NET Core Options Pattern
+## Overview
 
-Introduces binding configuration to a service (`MarkdownConverter`) in an ASP.NET Core app.
+- ASP.NET Core sample using the options pattern inside services/controllers.
+- Demonstrates injecting configured services into endpoints.
 
 ## Run
 
 ```powershell
-dotnet run --project 20-aspnet-options-pattern
+dotnet run --project 19-aspnet-options-pattern/AspNetOptionsPattern.csproj
 ```
 
-Browse to the app (default: <https://localhost:5001> or assigned port).
+## Notes
 
-## Key Points
-
-- Uses `builder.Services.Configure<T>` for options.
-- Demonstrates service lifetime swapping (transient/scoped/singleton commented).
-- Standard minimal hosting pattern.
+- After launching, browse to the HTTPS URL printed by dotnet run.

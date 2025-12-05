@@ -1,25 +1,14 @@
-# 04 - Environment Variables
+## Overview
 
-Adds `AddEnvironmentVariables()` showing how environment variables override JSON values.
+- Adds environment variables provider on top of JSON.
+- Illustrates overriding keys such as environment or greeting.
 
 ## Run
 
 ```powershell
-$env:environment = "qa"
-dotnet run --project 04-environment-variables
+dotnet run --project 04-environment-variables/EnvironmentVariables.csproj
 ```
 
-### Bash
+## Notes
 
-```bash
-environment=qa dotnet run --project 04-environment-variables
-```
-
-## Key Points
-
-- Provider order: JSON then Environment -> env vars win when keys collide.
-- Cross-platform examples (PowerShell / bash) moved from code comments to README.
-
-## Try
-
-Set `greeting` or `environment` via environment variable and verify override.
+- Set environment variables in your shell before running (PowerShell: $env:environment='qa').

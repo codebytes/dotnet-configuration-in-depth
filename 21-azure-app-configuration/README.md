@@ -1,25 +1,14 @@
-# 21 - Azure App Configuration + Refresh
+## Overview
 
-Uses Azure App Configuration with dynamic refresh registration.
-
-## Prerequisites
-
-1. Assign the identity you will run with (Azure CLI login, Visual Studio sign-in, or managed identity) the **App Configuration Data Reader** role on the target store.
-2. Provide the App Configuration endpoint via configuration, for example with user secrets:
-
-```powershell
-dotnet user-secrets set "AzureAppConfiguration:Endpoint" "https://<store-name>.azconfig.io" --project AzureAppConfiguration.csproj
-```
+- Connects to Azure App Configuration via DefaultAzureCredential and the store endpoint.
+- Uses sentinel-driven refresh plus middleware per request.
 
 ## Run
 
 ```powershell
-dotnet run --project 21-azure-app-configuration
+dotnet run --project 21-azure-app-configuration/AzureAppConfiguration.csproj
 ```
 
-## Key Points
+## Notes
 
-- RBAC + `DefaultAzureCredential` removes the need for connection strings; only the endpoint is required.
-- `AddAzureAppConfiguration` registers the sentinel-driven refresh for `TestApp:Settings`.
-- `UseAzureAppConfiguration()` middleware ensures each request uses the latest configuration snapshot.
-- `TestApp:Settings` binds to the `Settings` POCO used throughout the MVC app.
+- Grant App Configuration Data Reader and set AzureAppConfiguration:Endpoint via user secrets or environment variables before running.

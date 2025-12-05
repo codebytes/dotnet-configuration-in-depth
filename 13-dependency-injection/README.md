@@ -1,15 +1,10 @@
-# 17 - Dependency Injection
+## Overview
 
-Accesses configuration values through DI (`IConfiguration`).
+- Injects IConfiguration through the host service provider.
+- Retrieves typed values with GetValue<T> and nested keys.
 
 ## Run
 
 ```powershell
-dotnet run --project 17-dependency-injection
+dotnet run --project 13-dependency-injection/DependencyInjection.csproj
 ```
-
-## Key Points
-
-- Uses `config.GetValue<T>` for typed retrieval.
-- Shows nested key retrieval with colon syntax.
-- Illustrates difference between building host and using root service provider.

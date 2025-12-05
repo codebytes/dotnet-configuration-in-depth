@@ -1,21 +1,17 @@
-# 09 - Configuration Sections
+## Overview
 
-Demonstrates hierarchical keys (e.g. `greeting:message`) and retrieving nested values.
+- Explores hierarchical sections such as Greeting:Message.
+- Shows how nested keys flow from JSON, environment variables, and command-line arguments.
 
 ## Run
 
 ```powershell
-dotnet run --project 09-configuration-sections -- --greeting:color=blue
+dotnet run --project 08-configuration-sections -- --greeting:color=blue
 ```
 
 ### Additional Examples
 
 ```bash
-dotnet run --project 09-configuration-sections -- --greeting:color=green
+dotnet run --project 08-configuration-sections -- --greeting:color=green
+dotnet run --project 08-configuration-sections/ConfigurationSections.csproj
 ```
-
-## Key Points
-
-- Shows colon-delimited keys for hierarchy.
-- Mixes JSON + environment + (optional) user secrets + command line.
-- Basis for section binding in later samples.

@@ -1,19 +1,10 @@
-# 03 - JSON Configuration
+## Overview
 
-Introduces the JSON configuration provider via `AddJsonFile("config.json")`.
+- Loads config.json via AddJsonFile.
+- Reads values with the IConfiguration indexer.
 
 ## Run
 
 ```powershell
-dotnet run --project 03-json-config
+dotnet run --project 03-json-config/JsonConfig.csproj
 ```
-
-## Key Points
-
-- Builds an `IConfigurationRoot` with a single JSON file.
-- Accesses values using indexer: `configuration["greeting"]`.
-- Establishes baseline for precedence demos (env vars, command line) in later samples.
-
-## Try
-
-Edit `config.json` and re-run to see value changes (no reload-on-change here).

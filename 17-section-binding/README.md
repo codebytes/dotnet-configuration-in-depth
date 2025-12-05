@@ -1,15 +1,10 @@
-# 12 - Section Binding
+## Overview
 
-Demonstrates binding sections to POCOs via `Bind` and `Get<T>()`.
+- Binds configuration sections into POCOs with Bind and Get<T>().
+- Keeps strongly typed FileOptions in sync with JSON.
 
 ## Run
 
 ```powershell
-dotnet run --project 12-section-binding
+dotnet run --project 17-section-binding/SectionBinding.csproj
 ```
-
-## Key Points
-
-- Shows both explicit `Bind(instance)` and `Get<T>()` shortcut.
-- POCO `FileOptions` structure mirrors JSON.
-- Sets stage for options pattern (ASP samples).

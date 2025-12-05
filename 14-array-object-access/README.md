@@ -1,15 +1,10 @@
-# 18 - Array & Object Access
+## Overview
 
-Focuses on accessing arrays and objects via `config["Section:Key"]` indexer.
+- Accesses arrays via Section:0 style keys.
+- Demonstrates walking nested object graphs without binding.
 
 ## Run
 
 ```powershell
-dotnet run --project 18-array-object-access
+dotnet run --project 14-array-object-access/ArrayObjectAccess.csproj
 ```
-
-## Key Points
-
-- Array indices: `Section:0`, `Section:1`.
-- Object child access by key path.
-- Good precursor to full binding samples.
