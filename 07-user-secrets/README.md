@@ -1,21 +1,14 @@
-# 07 - User Secrets
+## Overview
 
-Demonstrates `AddUserSecrets<Program>()` for local secret storage (development only).
-
-## Setup
-
-```powershell
-dotnet user-secrets init --project 07-user-secrets
-dotnet user-secrets set "greeting" "SecretHello" --project 07-user-secrets
-```
+- Loads secrets from the user secrets store during Development.
+- Keeps API keys out of source control.
 
 ## Run
 
 ```powershell
-dotnet run --project 07-user-secrets
+dotnet run --project 07-user-secrets/UserSecrets.csproj
 ```
 
-## Key Points
+## Notes
 
-- User secrets override JSON but are not checked into source.
-- Suitable for API keys during local dev; not for production.
+- Initialize secrets via 'dotnet user-secrets init --project 07-user-secrets' and set the expected keys before running.

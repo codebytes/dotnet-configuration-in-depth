@@ -517,6 +517,32 @@ dotnet run
 
 ---
 
+# Environment Variables for Environment
+
+- `ASPNETCORE_ENVIRONMENT` (ASP.NET Core) — choose `Development`/`Staging`/`Production` per slot to drive `IWebHostEnvironment`.
+- `DOTNET_ENVIRONMENT` (generic hosts, workers) — keep identical to `ASPNETCORE_ENVIRONMENT` so overrides stay predictable.
+- `ASPNETCORE_ENVIRONMENT` via App Settings (Azure App Service) — one App Setting change flips every instance.
+- `DOTNET_ENVIRONMENT` in containers (Docker/K8s) — bake into manifests so host + container diagnostics align.
+
+---
+
+# Ports & URL Bindings
+
+- `ASPNETCORE_URLS` (any host) — specify full scheme + IP; separate multiples with `;`.
+- `HTTP_PORTS` / `HTTPS_PORTS` (.NET 8 containers) — shorthand feeding `ASPNETCORE_URLS`; defaults 8080/8443.
+- `WEBSITES_PORT` (Azure App Service custom containers) — set via App Settings so routing targets the right port.
+- `Kestrel__Endpoints__Http__Url` (fine-grained Kestrel) — use `__` hierarchy for per-endpoint bindings and cert wiring.
+
+---
+
+# Diagnostics, GC & Container Flags
+
+- `DOTNET_EnableDiagnostics` — set to `0` to block debugger/profiler attaches; combine with diagnostic ports for exceptions.
+- `DOTNET_DiagnosticPorts` — define connect/listen/suspend behavior when you still need targeted traces.
+- `DOTNET_RUNNING_IN_CONTAINER` — makes GC + ThreadPool honor cgroup limits inside containers.
+
+---
+
 # DEMOS
 
 ---
@@ -1055,7 +1081,7 @@ var apiService = builder.AddProject<Projects.ApiService>("apiservice")
 
 - [.NET Configuration Docs](https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration)
 - [.NET Aspire Docs](https://learn.microsoft.com/en-us/dotnet/aspire/)
-
+- [.NET Environment Variables](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-environment-variables)
 </div>
 
 <div>

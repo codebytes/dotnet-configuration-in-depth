@@ -1,15 +1,10 @@
-# 06 - In-Memory Configuration
+## Overview
 
-Uses `AddInMemoryCollection` to seed configuration dynamically at runtime.
+- Seeds configuration with AddInMemoryCollection.
+- Useful for tests or runtime-only defaults.
 
 ## Run
 
 ```powershell
-dotnet run --project 06-in-memory-config
+dotnet run --project 06-in-memory-config/InMemoryConfig.csproj
 ```
-
-## Key Points
-
-- Great for tests or programmatic seeding.
-- Shows accessing a key not present (`SomeKey`) returning null.
-- Prepares for binding + sections in later demos.
