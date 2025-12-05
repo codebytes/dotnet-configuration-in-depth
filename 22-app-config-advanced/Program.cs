@@ -1,26 +1,27 @@
+using Azure.Identity;
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 using Microsoft.FeatureManagement;
 using Microsoft.Azure.AppConfiguration.AspNetCore; // middleware extension
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Connection string expected via: AppConfig:ConnectionString (JSON) or AppConfig__ConnectionString (env var / user secrets)
-var connectionString = builder.Configuration["AppConfig:ConnectionString"] 
-    ?? builder.Configuration["AppConfig__ConnectionString"];
+var endpoint = builder.Configuration["AzureAppConfiguration:Endpoint"]
+    ?? builder.Configuration["AzureAppConfiguration__Endpoint"];
 
-var useAzureAppConfig = false;
-if (!string.IsNullOrWhiteSpace(connectionString))
+if (string.IsNullOrWhiteSpace(endpoint))
 {
-    builder.Configuration.AddAzureAppConfiguration(o =>
-    {
-        o.Connect(connectionString)
-         .ConfigureRefresh(r => r.Register("Sentinel", refreshAll: true)
-                                 .SetRefreshInterval(TimeSpan.FromSeconds(5)))
-         .UseFeatureFlags(ff => ff.SetRefreshInterval(TimeSpan.FromSeconds(5)));
-    });
-    builder.Services.AddAzureAppConfiguration(); // adds middleware support
-    useAzureAppConfig = true;
+    throw new InvalidOperationException("Configuration value 'AzureAppConfiguration:Endpoint' is required for RBAC authentication.");
 }
+
+builder.Configuration.AddAzureAppConfiguration(o =>
+{
+    o.Connect(new Uri(endpoint), new DefaultAzureCredential())
+     .ConfigureRefresh(r => r.Register("Sentinel", refreshAll: true)
+                             .SetRefreshInterval(TimeSpan.FromSeconds(5)))
+     .UseFeatureFlags(ff => ff.SetRefreshInterval(TimeSpan.FromSeconds(5)));
+});
+builder.Services.AddAzureAppConfiguration(); // adds middleware support
+var useAzureAppConfig = true;
 
 builder.Services.AddFeatureManagement();
 builder.Services.AddEndpointsApiExplorer();
@@ -64,7 +65,7 @@ app.MapGet("/", () => Results.Ok(new
 {
     Message = "Advanced App Configuration & Feature Flags Demo",
     Endpoints = new[] { "/config", "/feature/{name}", "/refresh" },
-    Instructions = "Set connection string via AppConfig__ConnectionString env var. Create key 'Demo:SimpleValue', 'Demo:Nested:Value', sentinel 'Sentinel', and feature flags. Modify values then update 'Sentinel' to force refresh earlier." }
+    Instructions = "Configure AzureAppConfiguration:Endpoint for DefaultAzureCredential access. Create keys 'Demo:SimpleValue', 'Demo:Nested:Value', the 'Sentinel' key, and feature flags. Modify values then bump 'Sentinel' to force refresh earlier." }
 ));
 
 app.Run();

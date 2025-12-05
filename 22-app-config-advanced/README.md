@@ -1,8 +1,8 @@
-# 21 - Advanced Azure App Configuration & Feature Flags
+# 22 - Advanced Azure App Configuration & Feature Flags
 
 Shows how to:
 
-* Connect to Azure App Configuration dynamically via connection string (env var or JSON)
+* Connect to Azure App Configuration via `DefaultAzureCredential` (RBAC) using the store endpoint
 * Use a refresh sentinel key to trigger full configuration reload
 * Consume feature flags through `Microsoft.FeatureManagement`
 * Inspect current configuration view & feature status
@@ -15,16 +15,29 @@ Shows how to:
    * `Demo:Nested:Value` = `Nested works`
    * `Sentinel` = `v1` (any value – change later to force global refresh)
 3. Add one or more feature flags (e.g. `BetaFeature`).
-4. Obtain the connection string from the portal and set an environment variable (PowerShell):
+4. Grant the identity you will run with the **App Configuration Data Reader** role on the store (Portal **Access control (IAM)** or CLI). Example for the signed-in Azure CLI user:
 
 ```pwsh
-$env:AppConfig__ConnectionString = "<YourConnectionString>"
+$principal = az ad signed-in-user show --query id -o tsv
+az role assignment create `
+   --assignee-object-id $principal `
+   --assignee-principal-type User `
+   --role "App Configuration Data Reader" `
+   --scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.AppConfiguration/configurationStores/<storeName>"
+```
+
+Next steps:
+
+1. Provide the App Configuration endpoint via user secrets or environment variable (PowerShell example):
+
+```pwsh
+dotnet user-secrets set "AzureAppConfiguration:Endpoint" "https://<store-name>.azconfig.io"
 ```
 
 1. Run the project:
 
 ```pwsh
-dotnet run --project 21-app-config-advanced
+dotnet run --project 22-app-config-advanced
 ```
 
 ## Endpoints
@@ -61,8 +74,8 @@ and observe Enabled true/false flips without a restart.
 
 ## Cleanup
 
-Remove the environment variable when done:
+Remove the secret or environment variable when done:
 
 ```pwsh
-Remove-Item Env:AppConfig__ConnectionString -ErrorAction SilentlyContinue
+dotnet user-secrets remove "AzureAppConfiguration:Endpoint"
 ```

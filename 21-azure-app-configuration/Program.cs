@@ -1,13 +1,18 @@
+using Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration["ConnectionStrings:AppConfig"];
+var appConfigEndpoint = builder.Configuration["AzureAppConfiguration:Endpoint"];
 
-//Connect to your App Config Store using the connection string
+if (string.IsNullOrWhiteSpace(appConfigEndpoint))
+{
+    throw new InvalidOperationException("Configuration value 'AzureAppConfiguration:Endpoint' is required when using DefaultAzureCredential.");
+}
+
 builder.Configuration.AddAzureAppConfiguration(options =>
 {
-    options.Connect(connectionString)
+    options.Connect(new Uri(appConfigEndpoint), new DefaultAzureCredential())
         .ConfigureRefresh(refresh =>
                 {
                     refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
