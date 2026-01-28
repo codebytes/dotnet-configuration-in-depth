@@ -26,6 +26,7 @@ builder.Configuration.AddAzureAppConfiguration(options =>
 });
 
 // Add services to the container.
+builder.Services.AddApplicationInsightsTelemetry();
 builder.Services.AddControllersWithViews();
 builder.Services.AddAzureAppConfiguration();
 builder.Services.AddFeatureManagement();
