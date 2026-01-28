@@ -10,21 +10,21 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
 
 Console.WriteLine($"markdownStyle: {configuration["markdownStyle"]}");
 
-var pdfOptions = new FileOptions();
+var pdfOptions = new OutputStyle();
 configuration.GetSection("pdf")
     .Bind(pdfOptions);
 WriteOptions(pdfOptions);
 
 var docOptions = configuration.GetSection("doc")
-    .Get<FileOptions>();
+    .Get<OutputStyle>();
 WriteOptions(docOptions);
 
 var htmlOptions = configuration.GetSection("html")
-    .Get<FileOptions>();
+    .Get<OutputStyle>();
 WriteOptions(htmlOptions);
 
 
-void WriteOptions(FileOptions? options)
+void WriteOptions(OutputStyle? options)
 {
     Console.WriteLine($"{options?.FileExtension} fileExtension: {options?.FileExtension}");
     Console.WriteLine($"{options?.FileExtension} OutputDir: {options?.OutputDir}");
@@ -32,7 +32,7 @@ void WriteOptions(FileOptions? options)
 }
 
 
-public class FileOptions
+public class OutputStyle
 {
     public string FileExtension { get; set; } ="";
     public string OutputDir { get; set; } ="";

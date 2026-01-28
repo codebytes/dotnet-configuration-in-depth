@@ -6,9 +6,14 @@
 ## Run
 
 ```powershell
-dotnet run --project 18-environment-configs/EnvironmentConfigs.csproj
+dotnet run -- --environment Development
+dotnet run -- --environment Staging
 ```
 
 ## Notes
 
 - Set DOTNET_ENVIRONMENT before running to swap between Development, Staging, and Production.
+
+```powershell
+$env:DOTNET_ENVIRONMENT = "Devlopment"
+```
