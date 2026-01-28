@@ -37,6 +37,11 @@ foreach ($entry in $settings.GetEnumerator())
     az appconfig kv set --name $AppConfigName --key $entry.Key --value $entry.Value -y --only-show-errors --output none | Out-Null
 }
 
+# Create feature flag
+az appconfig feature set --name $AppConfigName --feature Beta --description "Beta feature flag for testing" -y --only-show-errors --output none | Out-Null
+az appconfig feature enable --name $AppConfigName --feature Beta -y --only-show-errors --output none | Out-Null
+Write-Host "Created and enabled 'Beta' feature flag"
+
 $endpoint = "https://$AppConfigName.azconfig.io"
 dotnet user-secrets init --project $projectPath | Out-Null
 dotnet user-secrets set --project $projectPath 'AzureAppConfiguration:Endpoint' $endpoint | Out-Null

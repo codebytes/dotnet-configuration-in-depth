@@ -22,6 +22,11 @@ az appconfig kv set --name "${acName}" --key TestApp:Settings:FontSize --value 4
 az appconfig kv set --name "${acName}" --key TestApp:Settings:Message --value "Data from Azure App Configuration" -y --only-show-errors -o none
 az appconfig kv set --name "${acName}" --key TestApp:Settings:Sentinel --value 1 -y --only-show-errors -o none
 
+# Create feature flag
+az appconfig feature set --name "${acName}" --feature Beta --description "Beta feature flag for testing" -y --only-show-errors -o none
+az appconfig feature enable --name "${acName}" --feature Beta -y --only-show-errors -o none
+echo "Created and enabled 'Beta' feature flag"
+
 endpoint="https://${acName}.azconfig.io"
 dotnet user-secrets init --project "${project_path}" >/dev/null
 dotnet user-secrets set --project "${project_path}" "AzureAppConfiguration:Endpoint" "${endpoint}" >/dev/null

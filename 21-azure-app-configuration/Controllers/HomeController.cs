@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.FeatureManagement;
 using SampleAppConfigAsp.Models;
 
 namespace SampleAppConfigAsp.Controllers;
@@ -7,14 +8,17 @@ namespace SampleAppConfigAsp.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IFeatureManager _featureManager;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IFeatureManager featureManager)
     {
         _logger = logger;
+        _featureManager = featureManager;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        ViewData["BetaFeatureEnabled"] = await _featureManager.IsEnabledAsync("Beta");
         return View();
     }
 
