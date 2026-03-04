@@ -1,6 +1,6 @@
 # .NET Configuration in Depth
 
-This repository contains the slide deck, demos, and resources for the ".NET Configuration in Depth" talk by Chris Ayers, Senior Customer Engineer at Microsoft. The talk provides an in-depth look at .NET configuration, configuration providers, binding, and the options pattern.
+This repository contains the slide deck, demos, and resources for the ".NET Configuration in Depth" talk by Chris Ayers, Principal Software Engineer at Microsoft. The talk provides an in-depth look at .NET configuration, configuration providers, binding, and the options pattern.
 
 ## Slides
 
