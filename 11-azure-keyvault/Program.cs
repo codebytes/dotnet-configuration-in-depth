@@ -1,31 +1,43 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Builder;
+﻿using Azure.Extensions.AspNetCore.Configuration.Secrets;
 using Azure.Identity;
-using Azure.Security.KeyVault;
-using Azure.Security.KeyVault.Secrets;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add Application Insights telemetry
 builder.Services.AddApplicationInsightsTelemetry();
 
-var keyVaultName = builder.Configuration.GetValue<string>("AzureKeyVault:Name");
-if (string.IsNullOrWhiteSpace(keyVaultName))
+// Get Key Vault name from configuration (set via environment variable or appsettings)
+var keyVaultName = builder.Configuration["AzureKeyVault:Name"];
+if (!string.IsNullOrWhiteSpace(keyVaultName))
 {
-    throw new InvalidOperationException("Configuration value 'AzureKeyVault:Name' is required.");
+    var keyVaultUri = new Uri($"https://{keyVaultName}.vault.azure.net/");
+
+    // Connect to Key Vault using DefaultAzureCredential
+    // This supports managed identity in Azure and local development credentials
+    builder.Configuration.AddAzureKeyVault(
+        keyVaultUri,
+        new DefaultAzureCredential(),
+        new AzureKeyVaultConfigurationOptions
+        {
+            // Reload secrets every 5 minutes (optional - remove if not needed)
+            ReloadInterval = TimeSpan.FromMinutes(5)
+        });
+}
+else if (!builder.Environment.IsDevelopment())
+{
+    // Only require Key Vault in non-development environments
+    throw new InvalidOperationException("Configuration value 'AzureKeyVault:Name' is required in non-development environments.");
 }
 
-var keyVaultUri = new Uri($"https://{keyVaultName}.vault.azure.net/");
-
-//Connect to your KeyVault using the URI
-builder.Configuration
-    .AddAzureKeyVault(keyVaultUri, new DefaultAzureCredential());
 var app = builder.Build();
-var configuration = app.Configuration;
 
-Console.WriteLine($"Message: {configuration["Message"]}");
+// Access configuration values - Key Vault secrets override local config
+var message = app.Configuration["Message"] ?? "No message configured";
+var greeting = app.Configuration["greeting"] ?? "Hello";
+var environment = app.Configuration["environment"] ?? "unknown";
 
-var name = args.Any() ? args[0] : "World";
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine($"{configuration["greeting"]}, {name}.");
-Console.WriteLine($"Environment: {configuration["environment"]}");
+Console.WriteLine($"Message: {message}");
+
+var name = args.Length > 0 ? args[0] : "World";
+Console.WriteLine($"{greeting}, {name}.");
+Console.WriteLine($"Environment: {environment}");

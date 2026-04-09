@@ -13,15 +13,20 @@ DumpKey("Precedence:EnvironmentOnly");
 DumpKey("Precedence:CommandLineOnly");
 
 PrintHeader("Providers (Top = Highest Precedence)");
-int i = 0;
-foreach (var src in config.Sources.Reverse())
-    Console.WriteLine($"  {++i}. {src.GetType().Name}");
+var index = 0;
+foreach (var source in config.Sources.Reverse())
+    Console.WriteLine($"  {++index}. {source.GetType().Name}");
 
-PrintHeader("Configuration Debug View");
-Console.WriteLine(config.GetDebugView(ctx => 
-    ctx.Key.Contains("Secret", StringComparison.OrdinalIgnoreCase) 
-        ? "****" 
-        : ctx.Value));
+PrintHeader("Configuration Debug View (Precedence only)");
+var debugView = config.GetDebugView(ctx =>
+    ctx.Key.Contains("Secret", StringComparison.OrdinalIgnoreCase) ? "****" : ctx.Value);
+
+// Filter to only show Precedence keys
+foreach (var line in debugView.Split(Environment.NewLine))
+{
+    if (line.Contains("Precedence", StringComparison.OrdinalIgnoreCase))
+        Console.WriteLine(line);
+}
 
 return;
 
