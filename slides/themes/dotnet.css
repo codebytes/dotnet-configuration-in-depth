@@ -143,9 +143,18 @@ section pre code {
 section table {
   border-collapse: collapse;
   width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
   font-size: 0.85em;
   border-radius: 8px;
   overflow: hidden;
+  margin: 0.5em 0;
+}
+
+/* Add to dotnet.css for explicit full-width tables */
+section table.full-width {
+  width: 100% !important;
+  display: table;
 }
 
 section table th {

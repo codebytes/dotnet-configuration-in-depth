@@ -11,7 +11,7 @@ footer: 'https://chris-ayers.com'
 
 ## Chris Ayers
 
-![bg right:40%](./img/dotnet-logo.png)
+![bg right:50%](./img/dotnet-logo.png)
 
 ---
 
@@ -590,6 +590,8 @@ public class FileOptions
 
 ---
 
+<!-- _class: full-width -->
+
 # Types of IOptions
 
 |  | Singleton | Reloading Support | Named Option Support |
@@ -732,8 +734,6 @@ public class DatabaseOptions
     [RegularExpression(@"^[a-zA-Z0-9_]+$")]
     public string DatabaseName { get; set; } = "";
 }
-
-// Register with validation
 services.AddOptions<DatabaseOptions>()
     .Bind(configuration.GetSection("Database"))
     .ValidateDataAnnotations()
@@ -753,11 +753,9 @@ public class DatabaseOptionsValidator : IValidateOptions<DatabaseOptions>
         var failures = new List<string>();
         
         if (string.IsNullOrEmpty(options.ConnectionString))
-            failures.Add("ConnectionString is required");
-            
+            failures.Add("ConnectionString is required");          
         if (options.CommandTimeoutSeconds <= 0)
             failures.Add("CommandTimeoutSeconds must be positive");
-            
         if (!IsValidDatabaseName(options.DatabaseName))
             failures.Add("Invalid database name format");
             
@@ -814,13 +812,11 @@ var app = builder.Build();
 - **Better DevEx**: Immediate feedback during development
 
 ```csharp
-// Custom validation method
 services.AddOptions<MyOptions>()
     .Bind(configuration.GetSection("MySection"))
     .Validate(options => 
-    {
-        return options.ApiKey?.Length >= 10;
-    }, "ApiKey must be at least 10 characters")
+        { return options.ApiKey?.Length >= 10; }, 
+        "ApiKey must be at least 10 characters")
     .ValidateOnStart();
 ```
 
