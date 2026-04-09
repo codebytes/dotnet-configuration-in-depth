@@ -5,6 +5,10 @@ using Azure.Security.KeyVault;
 using Azure.Security.KeyVault.Secrets;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add Application Insights telemetry
+builder.Services.AddApplicationInsightsTelemetry();
+
 var keyVaultName = builder.Configuration.GetValue<string>("AzureKeyVault:Name");
 if (string.IsNullOrWhiteSpace(keyVaultName))
 {

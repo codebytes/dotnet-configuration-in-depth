@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="AspireSample.ApiService/AspireSample.ApiService.csproj" />
+  <Project Path="AspireSample.AppHost/AspireSample.AppHost.csproj" />
+  <Project Path="AspireSample.ServiceDefaults/AspireSample.ServiceDefaults.csproj" />
+  <Project Path="AspireSample.Tests/AspireSample.Tests.csproj" />
+  <Project Path="AspireSample.Web/AspireSample.Web.csproj" />
+</Solution>

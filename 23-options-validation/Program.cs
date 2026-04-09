@@ -20,6 +20,14 @@ builder.Services.AddOptions<WebHookSettings>()
         {
             return webHookSettings.WebhookUrl.StartsWith("https://");
         }, "WebHookUrl must start with https://")
+    .PostConfigure(options =>
+    {
+        // Ensure RetryTimes is non-negative
+        if (options.RetryTimes < 0)
+        {
+            options.RetryTimes = 0;
+        }
+    })
     .ValidateOnStart();
 
 builder.Services.AddSingleton(resolver =>

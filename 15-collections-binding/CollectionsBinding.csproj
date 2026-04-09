@@ -9,9 +9,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="appsettings.json"><CopyToOutputDirectory>Always</CopyToOutputDirectory></None>
-    <None Update="appsettings.Development.json"><CopyToOutputDirectory>Always</CopyToOutputDirectory></None>
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
+  <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" />
   </ItemGroup>
 </Project>
