@@ -1,0 +1,450 @@
+/* dotnet.css */
+/* @theme dotnet */
+
+/*
+ * .NET Brand Theme for Marp
+ * Based on the design system at https://dotnet.microsoft.com/
+ * Primary: .NET Purple (#512BD4)
+ * Accent: Magenta (#D600AA), Cyan (#28C2D1), Flamingo (#F65163)
+ * Fonts: Space Grotesk (headings), Open Sans (body)
+ */
+
+@import 'default';
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+
+:root {
+  /* Primary Brand Colors */
+  --dotnet-purple: #512BD4;
+  --dotnet-purple-dark: #4122AA;
+  --dotnet-purple-darker: #311A7F;
+  --dotnet-purple-light: #7455DD;
+  --dotnet-purple-lighter: #9780E5;
+  --dotnet-purple-tint: #DCD5F6;
+  --dotnet-purple-bg: #F3F0FB;
+  
+  /* Accent Colors */
+  --dotnet-magenta: #D600AA;
+  --dotnet-magenta-dark: #AB0088;
+  --dotnet-cyan: #28C2D1;
+  --dotnet-cyan-light: #53CEDA;
+  --dotnet-flamingo: #F65163;
+  --dotnet-blue: #0B6CFF;
+  
+  /* Dark Theme Colors */
+  --dotnet-midnight: #190649;
+  --dotnet-midnight-deep: #0F042C;
+  --dotnet-dark-surface: #1A1A2E;
+  
+  /* Neutral Colors */
+  --dotnet-text: #242424;
+  --dotnet-text-light: #616161;
+  --dotnet-border: #E1E1E1;
+  --dotnet-bg: #FFFFFF;
+  --dotnet-bg-alt: #FAFAFA;
+  --dotnet-code-bg: #1E1E2E;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--dotnet-purple), var(--dotnet-magenta));
+  --gradient-hero: linear-gradient(135deg, var(--dotnet-midnight-deep) 0%, var(--dotnet-purple-darker) 50%, var(--dotnet-purple) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--dotnet-purple-lighter), var(--dotnet-magenta), var(--dotnet-cyan));
+}
+
+/* ========================================
+   BASE SECTION STYLES
+   ======================================== */
+section {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  color: var(--dotnet-text);
+  background-color: var(--dotnet-bg);
+  padding: 50px 60px;
+  line-height: 1.4;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--dotnet-purple);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+section h1 {
+  font-size: 1.9em;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+section h2 {
+  font-size: 1.35em;
+  color: var(--dotnet-purple);
+}
+
+section h3 {
+  font-size: 1.1em;
+  color: var(--dotnet-purple-dark);
+}
+
+/* ========================================
+   LINKS
+   ======================================== */
+section a {
+  color: var(--dotnet-purple);
+  text-decoration: none;
+  border-bottom: 2px solid var(--dotnet-purple-tint);
+  transition: border-color 0.2s;
+}
+section a:hover {
+  border-bottom-color: var(--dotnet-purple);
+}
+
+/* ========================================
+   CODE BLOCKS
+   ======================================== */
+section code {
+  font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Monaco', monospace;
+  background-color: var(--dotnet-purple-bg);
+  color: var(--dotnet-purple-darker);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.85em;
+}
+
+section pre {
+  border-radius: 8px;
+  border: 1px solid var(--dotnet-border);
+  box-shadow: 0 2px 8px rgba(81, 43, 212, 0.08);
+  overflow: hidden;
+}
+
+section pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: 0.68em;
+  line-height: 1.5;
+}
+
+/* ========================================
+   TABLES
+   ======================================== */
+section table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.85em;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+section table th {
+  background: var(--gradient-primary);
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+section table td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--dotnet-border);
+}
+
+section table tr:nth-child(even) {
+  background-color: var(--dotnet-bg-alt);
+}
+
+section table tr:hover {
+  background-color: var(--dotnet-purple-bg);
+}
+
+/* ========================================
+   BLOCKQUOTES
+   ======================================== */
+section blockquote {
+  border-left: 4px solid var(--dotnet-purple);
+  background: linear-gradient(135deg, var(--dotnet-purple-bg), rgba(214, 0, 170, 0.03));
+  padding: 12px 20px;
+  border-radius: 0 10px 10px 0;
+  color: var(--dotnet-purple-darker);
+  font-style: italic;
+  margin: 12px 0;
+}
+
+/* ========================================
+   LISTS
+   ======================================== */
+section ul,
+section ol {
+  margin-left: 0.3em;
+}
+
+section li {
+  margin-bottom: 0.2em;
+}
+
+section li::marker {
+  color: var(--dotnet-purple);
+}
+
+/* ========================================
+   STRONG / EM
+   ======================================== */
+section strong {
+  color: var(--dotnet-purple-darker);
+}
+
+/* ========================================
+   TITLE / LEAD SLIDE  (class: lead)
+   ======================================== */
+section.lead {
+  background: var(--gradient-hero);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section.lead h1 {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.4em;
+  text-shadow: none;
+}
+
+section.lead h2 {
+  color: var(--dotnet-purple-tint);
+  font-weight: 500;
+  font-size: 1.2em;
+  opacity: 0.95;
+}
+
+section.lead h3 {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+}
+
+section.lead a {
+  color: var(--dotnet-cyan-light);
+  border-bottom-color: rgba(83, 206, 218, 0.3);
+}
+
+section.lead strong {
+  color: var(--dotnet-cyan-light);
+}
+
+/* ========================================
+   INVERT SLIDE (dark background)
+   ======================================== */
+section.invert {
+  background: linear-gradient(160deg, var(--dotnet-midnight-deep), var(--dotnet-purple-darker));
+  color: #E5E5E5;
+}
+
+section.invert h1,
+section.invert h2,
+section.invert h3 {
+  color: var(--dotnet-purple-lighter);
+}
+
+section.invert h1 {
+  background: linear-gradient(135deg, var(--dotnet-purple-lighter), var(--dotnet-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+section.invert code {
+  background-color: rgba(81, 43, 212, 0.2);
+  color: var(--dotnet-purple-tint);
+}
+
+section.invert strong {
+  color: var(--dotnet-cyan-light);
+}
+
+section.invert li::marker {
+  color: var(--dotnet-cyan);
+}
+
+section.invert a {
+  color: var(--dotnet-cyan-light);
+  border-bottom-color: rgba(83, 206, 218, 0.3);
+}
+
+section.invert table th {
+  background: linear-gradient(135deg, var(--dotnet-purple-light), var(--dotnet-magenta));
+}
+
+section.invert table td {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+section.invert table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+section::after {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: var(--dotnet-text-light);
+}
+
+header, footer {
+  font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+  color: var(--dotnet-text-light) !important;
+  font-size: 14px;
+}
+
+section.lead footer,
+section.invert footer {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ========================================
+   LAYOUT HELPERS
+   ======================================== */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.columns21 {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
+}
+
+.columns3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+
+/* ========================================
+   SOCIAL MEDIA ICONS
+   ======================================== */
+.fa-twitter { color: #1DA1F2; }
+.fa-mastodon { color: #6364FF; }
+.fa-linkedin { color: #0A66C2; }
+.fa-window-maximize { color: var(--dotnet-purple); }
+.fa-bluesky { color: #0085FF; }
+.fa-github { color: #24292F; }
+
+section.lead .fa-twitter,
+section.lead .fa-mastodon,
+section.lead .fa-linkedin,
+section.lead .fa-window-maximize,
+section.lead .fa-bluesky,
+section.lead .fa-github,
+section.invert .fa-twitter,
+section.invert .fa-mastodon,
+section.invert .fa-linkedin,
+section.invert .fa-window-maximize,
+section.invert .fa-bluesky,
+section.invert .fa-github {
+  color: var(--dotnet-cyan-light);
+}
+
+/* ========================================
+   MERMAID DIAGRAMS
+   ======================================== */
+svg[id^="mermaid-"] {
+  max-width: 960px;
+  max-height: 600px;
+}
+
+/* ========================================
+   ACCENT BADGE (for "NEW" labels etc.)
+   ======================================== */
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--dotnet-purple), var(--dotnet-magenta));
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6em;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 12px;
+  vertical-align: middle;
+  margin-left: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   HIGHLIGHT BOX
+   ======================================== */
+.highlight-box {
+  background: linear-gradient(135deg, var(--dotnet-purple-bg), rgba(214, 0, 170, 0.05));
+  border: 1px solid var(--dotnet-purple-tint);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+
+.highlight-box h3 {
+  margin-top: 0;
+  font-size: 0.95em;
+}
+
+/* ========================================
+   ADDITIONAL HELPERS
+   ======================================== */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-purple { color: var(--dotnet-purple); }
+.text-magenta { color: var(--dotnet-magenta); }
+.text-cyan { color: var(--dotnet-cyan); }
+
+.bg-purple { background-color: var(--dotnet-purple); color: white; }
+.bg-gradient { background: var(--gradient-primary); color: white; }
+
+/* Strikethrough styling */
+section del {
+  color: var(--dotnet-text-light);
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Image styling */
+section img {
+  border-radius: 8px;
+}
+
+/* Subtle animation for transitions (Marp export) */
+section {
+  transition: background-color 0.3s ease;
+}

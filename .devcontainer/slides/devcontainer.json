@@ -19,7 +19,8 @@
 			"settings": {
 				"markdown.marp.html": "all",
 				"markdown.marp.themes": [
-					"./slides/themes/custom-default.css"
+					"./slides/themes/custom-default.css",
+					"./slides/themes/dotnet.css"
 				]
 			},
 			"extensions": [

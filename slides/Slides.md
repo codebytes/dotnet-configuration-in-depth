@@ -1,16 +1,17 @@
 ---
 marp: true
-theme: custom-default
+theme: dotnet
 footer: 'https://chris-ayers.com'
 ---
 
 <!-- _footer: 'https://github.com/codebytes/dotnet-configuration-in-depth' -->
+<!-- _class: lead -->
 
 # Modern .NET Configuration
 
 ## Chris Ayers
 
-![bg left](./img/dotnet-logo.png)
+![bg right:40%](./img/dotnet-logo.png)
 
 ---
 
@@ -18,7 +19,7 @@ footer: 'https://chris-ayers.com'
 
 ## Chris Ayers
 
-### Senior Software Egnineer<br>Azure CXP AzRel<br>Microsoft
+### Principal Software Engineer<br>Azure CXP AzRel<br>Microsoft
 
 <i class="fa-brands fa-bluesky"></i> BlueSky: [@chris-ayers.com](https://bsky.app/profile/chris-ayers.com)
 <i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
@@ -1063,6 +1064,8 @@ var apiService = builder.AddProject<Projects.ApiService>("apiservice")
 ```
 
 ---
+
+<!-- _class: lead -->
 
 # Questions?
 

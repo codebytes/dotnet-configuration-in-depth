@@ -2,5 +2,9 @@
     "cSpell.words": [
         "HSTS"
     ],
-    "dotnet.defaultSolution": "net-framework-example/NetFrameworkSample.sln"
+    "dotnet.defaultSolution": "dotnet-configuration-in-depth.slnx",
+    "markdown.marp.themes": [
+        "./slides/themes/dotnet.css"
+    ],
+    "dotnet.enableWorkspaceBasedDevelopment": true
 }

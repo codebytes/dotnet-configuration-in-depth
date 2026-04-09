@@ -46,29 +46,29 @@
   <Folder Name="/14-array-object-access/">
     <Project Path="14-array-object-access/ArrayObjectAccess.csproj" />
   </Folder>
-  <Folder Name="/15-flat-configuration/">
-    <Project Path="15-flat-configuration/FlatConfiguration.csproj" />
+  <Folder Name="/15-collections-binding/">
+    <Project Path="15-collections-binding/CollectionsBinding.csproj" />
   </Folder>
-  <Folder Name="/16-hierarchical-config/">
-    <Project Path="16-hierarchical-config/HierarchicalConfig.csproj" />
+  <Folder Name="/16-environment-configs/">
+    <Project Path="16-environment-configs/EnvironmentConfigs.csproj" />
   </Folder>
-  <Folder Name="/17-section-binding/">
-    <Project Path="17-section-binding/SectionBinding.csproj" />
+  <Folder Name="/17-flat-configuration/">
+    <Project Path="17-flat-configuration/FlatConfiguration.csproj" />
   </Folder>
-  <Folder Name="/18-environment-configs/">
-    <Project Path="18-environment-configs/EnvironmentConfigs.csproj" />
+  <Folder Name="/18-hierarchical-config/">
+    <Project Path="18-hierarchical-config/HierarchicalConfig.csproj" />
   </Folder>
-  <Folder Name="/19-aspnet-options-pattern/">
-    <Project Path="19-aspnet-options-pattern/AspNetOptionsPattern.csproj" />
+  <Folder Name="/19-section-binding/">
+    <Project Path="19-section-binding/SectionBinding.csproj" />
   </Folder>
-  <Folder Name="/20-named-options/">
-    <Project Path="20-named-options/NamedOptions.csproj" />
+  <Folder Name="/20-aspnet-options-pattern/">
+    <Project Path="20-aspnet-options-pattern/AspNetOptionsPattern.csproj" />
   </Folder>
-  <Folder Name="/21-azure-app-configuration/">
-    <Project Path="21-azure-app-configuration/AzureAppConfiguration.csproj" />
+  <Folder Name="/21-named-options/">
+    <Project Path="21-named-options/NamedOptions.csproj" />
   </Folder>
-  <Folder Name="/22-app-config-advanced/">
-    <Project Path="22-app-config-advanced/AppConfigAdvanced.csproj" />
+  <Folder Name="/22-azure-app-configuration/">
+    <Project Path="22-azure-app-configuration/AzureAppConfiguration.csproj" />
   </Folder>
   <Folder Name="/23-options-validation/">
     <Project Path="23-options-validation/OptionsValidation.csproj" />
@@ -79,23 +79,17 @@
   <Folder Name="/25-logging-reload/">
     <Project Path="25-logging-reload/LoggingReload.csproj" />
   </Folder>
-  <Folder Name="/26-collections-binding/">
-    <Project Path="26-collections-binding/CollectionsBinding.csproj" />
+  <Folder Name="/26-configuration-testing/">
+    <Project Path="26-configuration-testing/ConfigurationTesting.csproj" />
   </Folder>
-  <Folder Name="/27-secret-matrix/">
-    <Project Path="27-secret-matrix/SecretMatrix.csproj" />
+  <Folder Name="/27-integration-testing/">
+    <Project Path="27-integration-testing/IntegrationTesting.csproj" />
   </Folder>
-  <Folder Name="/28-configuration-testing/">
-    <Project Path="28-configuration-testing/ConfigurationTesting.csproj" />
-  </Folder>
-  <Folder Name="/29-integration-testing/">
-    <Project Path="29-integration-testing/IntegrationTesting.csproj" />
-  </Folder>
-  <Folder Name="/30-aspire/">
-    <Project Path="30-aspire/AspireSample.ApiService/AspireSample.ApiService.csproj" />
-    <Project Path="30-aspire/AspireSample.AppHost/AspireSample.AppHost.csproj" />
-    <Project Path="30-aspire/AspireSample.ServiceDefaults/AspireSample.ServiceDefaults.csproj" />
-    <Project Path="30-aspire/AspireSample.Tests/AspireSample.Tests.csproj" />
-    <Project Path="30-aspire/AspireSample.Web/AspireSample.Web.csproj" />
+  <Folder Name="/28-aspire/">
+    <Project Path="28-aspire/AspireSample.ApiService/AspireSample.ApiService.csproj" />
+    <Project Path="28-aspire/AspireSample.AppHost/AspireSample.AppHost.csproj" />
+    <Project Path="28-aspire/AspireSample.ServiceDefaults/AspireSample.ServiceDefaults.csproj" />
+    <Project Path="28-aspire/AspireSample.Tests/AspireSample.Tests.csproj" />
+    <Project Path="28-aspire/AspireSample.Web/AspireSample.Web.csproj" />
   </Folder>
 </Solution>
