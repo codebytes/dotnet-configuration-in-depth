@@ -4,7 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Aspire packages -->
-    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.2.2" />
+    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.2.4" />
     <PackageVersion Include="Aspire.Hosting.Testing" Version="13.2.2" />
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.2.2" />
     <!-- Azure packages -->
