@@ -5,7 +5,7 @@
   <ItemGroup>
     <!-- Aspire packages -->
     <PackageVersion Include="Aspire.Hosting.Redis" Version="13.4.4" />
-    <PackageVersion Include="Aspire.Hosting.Testing" Version="13.3.0" />
+    <PackageVersion Include="Aspire.Hosting.Testing" Version="13.4.6" />
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.4.4" />
     <!-- Azure packages -->
     <PackageVersion Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.5.1" />
