@@ -23,6 +23,8 @@ jobs:
           global-json-file: global.json
       - name: Trust this disposable runner's local development HTTPS certificate
         run: |
+          export SSL_CERT_DIR="$HOME/.aspnet/dev-certs/trust:${SSL_CERT_DIR:-/usr/lib/ssl/certs}"
+          echo "SSL_CERT_DIR=$SSL_CERT_DIR" >> "$GITHUB_ENV"
           dotnet dev-certs https --trust
           dotnet dev-certs https --check --trust
       - run: dotnet restore dotnet-configuration-in-depth.slnx
