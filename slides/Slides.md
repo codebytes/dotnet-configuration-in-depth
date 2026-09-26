@@ -19,7 +19,7 @@ footer: 'https://chris-ayers.com'
 
 ## Chris Ayers
 
-### Principal Software Engineer<br>Azure CXP AzRel<br>Microsoft
+### Principal Software Engineer<br>Azure EngOps AzRel<br>Microsoft
 
 <i class="fa-brands fa-bluesky"></i> BlueSky: [@chris-ayers.com](https://bsky.app/profile/chris-ayers.com)
 <i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
@@ -171,13 +171,13 @@ footer: 'https://chris-ayers.com'
 
 # Configuration Providers
 
-![center width:980](./img/configuration-providers.png)
+![center height:520](./img/configuration-providers.png)
 
 ---
 
 # Order Matters
 
-![center width:980](./img/configuration-source.png)
+![center height:520](./img/configuration-source.png)
 
 ---
 
@@ -596,9 +596,9 @@ public class FileOptions
 
 |  | Singleton | Reloading Support | Named Option Support |
 | :-: | :-: | :-: | :-: |
-| IOptions<T><br /> | Yes | No | No |
-| IOptionsSnapshot<T><br /> | No | Yes | Yes |
-| IOptionsMonitor<T><br /> | Yes | Yes | Yes |
+| IOptions&lt;T&gt;<br /> | Yes | No | No |
+| IOptionsSnapshot&lt;T&gt;<br /> | No | Yes | Yes |
+| IOptionsMonitor&lt;T&gt;<br /> | Yes | Yes | Yes |
 
 ---
 
@@ -715,6 +715,10 @@ public class TestWebApplicationFactory<TProgram>
 
 # Configuration Validation
 
+<style scoped>
+h2 { margin-top: 0; }
+</style>
+
 <div class="columns">
 <div>
 
@@ -775,6 +779,11 @@ services.AddSingleton<IValidateOptions<DatabaseOptions>, DatabaseOptionsValidato
 ---
 
 # Validation at Startup
+
+<style scoped>
+h2 { margin-top: 0; }
+ul { line-height: 1.3; margin-bottom: 8px; }
+</style>
 
 <div class="columns">
 <div>
