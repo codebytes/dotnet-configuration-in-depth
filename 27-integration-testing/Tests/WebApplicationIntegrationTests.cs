@@ -228,6 +228,10 @@ public class CustomConfigurationIntegrationTests : IClassFixture<CustomWebApplic
     {
         // Arrange
         var client = _factory.CreateClient();
+        // Exercise the real endpoint once before measuring configured request delay.
+        // Cold-start routing/JIT costs vary by runner and are not the setting under test.
+        using var warmup = await client.GetAsync("/api/data");
+        warmup.EnsureSuccessStatusCode();
         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
         // Act
