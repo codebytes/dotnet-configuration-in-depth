@@ -1,0 +1,31 @@
+name: .NET build and tests
+on:
+  push:
+    branches: [main]
+    paths: ['**/*.cs', '**/*.csproj', '**/*.props', '**/*.json', '**/*.sln*', '.github/workflows/dotnet-build.yml']
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+      - run: dotnet restore dotnet-configuration-in-depth.slnx
+      - run: dotnet build dotnet-configuration-in-depth.slnx --no-restore --configuration Release -m:2
+      - name: Configuration unit tests
+        run: dotnet test 26-configuration-testing/ConfigurationTesting.csproj --no-build --no-restore --configuration Release
+      - name: Integration tests (including the unchanged timing assertion)
+        run: dotnet test 27-integration-testing/IntegrationTesting.csproj --no-build --no-restore --configuration Release
+      - name: Aspire integration tests on the disposable runner's Docker daemon
+        run: dotnet 28-aspire/AspireSample.Tests/bin/Release/net10.0/AspireSample.Tests.dll --timeout 180s --no-ansi --no-progress
