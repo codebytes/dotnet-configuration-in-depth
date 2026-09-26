@@ -21,6 +21,10 @@ jobs:
       - uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
+      - name: Trust this disposable runner's local development HTTPS certificate
+        run: |
+          dotnet dev-certs https --trust
+          dotnet dev-certs https --check --trust
       - run: dotnet restore dotnet-configuration-in-depth.slnx
       - run: dotnet build dotnet-configuration-in-depth.slnx --no-restore --configuration Release -m:2
       - name: Configuration unit tests
