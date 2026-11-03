@@ -6,6 +6,13 @@ Slides, demos, and resources for an in-depth look at .NET configuration, configu
 
 [View HTML slides](https://chris-ayers.com/dotnet-configuration-in-depth/) | [Download PDF](https://chris-ayers.com/dotnet-configuration-in-depth/Slides.pdf)
 
+## Recordings
+
+- [NDC London 2026 — Modern .NET Configuration Practices](https://www.youtube.com/watch?v=_2nz0teyeYQ)
+- [Build Stuff 2025 — Modern .NET Configuration Practices](https://www.youtube.com/watch?v=vpHFtwNpWnI)
+- [NDC Copenhagen 2025 — Modern .NET Configuration Practices](https://www.youtube.com/watch?v=qGnOnPMFDv0)
+- [On .NET Live — Configuration in .NET 6](https://www.youtube.com/watch?v=6Fg54CEBVno)
+
 ## Resources
 
 - [Slide source](slides/Slides.md)
